@@ -1,0 +1,66 @@
+name: Passport read report
+description: Tell us what happened when you read a passport, whether it worked or not.
+labels: [read-report]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Reports from passports the library has not seen are how it improves, so thank you.
+
+        **Never include personal data.** No names, dates of birth or expiry, document numbers, MRZ lines, physical details, photos or screenshots of a real read. A debug build logs the MRZ and some details of the holder, so check every log line before pasting it.
+  - type: input
+    id: country
+    attributes:
+      label: Issuing country
+      placeholder: e.g. Germany
+    validations:
+      required: true
+  - type: input
+    id: issued
+    attributes:
+      label: Roughly when the passport was issued
+      placeholder: e.g. 2021
+    validations:
+      required: false
+  - type: input
+    id: phone
+    attributes:
+      label: Phone model and Android version
+      placeholder: e.g. Pixel 8, Android 15
+    validations:
+      required: true
+  - type: dropdown
+    id: outcome
+    attributes:
+      label: What happened
+      options:
+        - The read succeeded and every check passed
+        - The read succeeded but a check failed or was not checked
+        - The read failed with an error
+        - The passport was never detected
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: The error shown, which checks failed, and anything else you noticed.
+    validations:
+      required: false
+  - type: textarea
+    id: logs
+    attributes:
+      label: Log lines
+      description: |
+        From a debug build of the sample app:
+        `adb logcat -s PassportNFC PassiveAuthentication ActiveAuthentication PACE_PROBE PACE CHIP_AUTH DATA_GROUPS BIOMETRIC_FORMAT`
+      render: text
+    validations:
+      required: false
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Personal data
+      options:
+        - label: I have removed everything that describes the holder - name, document number, MRZ, dates of birth and expiry, and physical details - from this report.
+          required: true

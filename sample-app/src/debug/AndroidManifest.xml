@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Debug builds only. Merged over the main manifest, so a release build never
+  contains the demo activity, not even unreachable.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application>
+        <!--
+          Exported so adb can start it; there is no launcher entry and nothing
+          in the app links to it. Every value it shows is invented.
+        -->
+        <activity
+            android:name=".demo.DemoResultActivity"
+            android:exported="true"
+            android:theme="@style/Theme.PassportReaderSample" />
+    </application>
+
+</manifest>

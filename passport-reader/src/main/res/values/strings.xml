@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Every word this library can put in front of a user.
+
+  These are defaults, not decisions. A consuming app overrides any of them by
+  declaring the same name in its own strings.xml; nothing here is referenced by
+  the library except through PassportReadException's titleRes/messageRes, so
+  an app that would rather write its own wording can ignore the lot and switch
+  on the exception type instead.
+
+  Nothing technical belongs here. Status words, PACE step descriptions and the
+  rest of technicalDetails stay in Kotlin: they are diagnostics for a bug
+  report, not copy, and translating them would make them harder to search for.
+-->
+<resources>
+
+    <!-- WrongMrz: the three MRZ fields do not match the chip. -->
+    <string name="passport_error_wrong_mrz_title">Incorrect passport details</string>
+    <string name="passport_error_wrong_mrz_message">The passport details don\'t match the chip.\n\nPlease check:\n• Passport number, exactly as printed, with no spaces\n• Date of birth, in YYMMDD order\n• Expiry date, in YYMMDD order\n\nThese are the two rows at the bottom of the photo page, not the dates printed above them.</string>
+
+    <!-- AuthenticationFailed: the MRZ looks right but the chip refused. -->
+    <string name="passport_error_authentication_failed_title">Authentication failed</string>
+    <string name="passport_error_authentication_failed_message">Could not authenticate with the passport chip.\n\nThis could be caused by:\n• A damaged or worn passport chip\n• Interference during reading\n• A protective case blocking the NFC signal\n\nTry again with the phone on the passport cover, keeping it very steady.</string>
+
+    <!-- PaceFailed, with and without a known step number. -->
+    <string name="passport_error_pace_failed_title">PACE authentication failed</string>
+    <string name="passport_error_pace_failed_message">PACE authentication failed.\n\nThis passport requires PACE before the chip data can be read.\n• Check that the passport number, date of birth and expiry date match the MRZ exactly.\n• If they are correct, this device may not support the chip or its security settings.\n\nKeep the phone steady on the passport and try again, or try a different device if the problem persists.</string>
+    <string name="passport_error_pace_failed_message_at_step">PACE authentication failed at step %1$d.\n\nThis passport requires PACE before the chip data can be read.\n• Check that the passport number, date of birth and expiry date match the MRZ exactly.\n• If they are correct, this device may not support the chip or its security settings.\n\nKeep the phone steady on the passport and try again, or try a different device if the problem persists.</string>
+
+    <!-- TagLost: the NFC link dropped mid-read. -->
+    <string name="passport_error_tag_lost_title">Connection lost</string>
+    <string name="passport_error_tag_lost_message">Lift the phone off the passport, select Try again, then rest it back down. That refreshes the connection.\n\nThe order matters. Selecting Try again with the phone still on the passport tends to fail again, because the chip has to be found fresh.\n\nIf it keeps happening:\n\u2022 Keep the phone still once it is down\n\u2022 Remove any phone case or cover\n\u2022 Keep both off metal surfaces</string>
+
+    <!-- NfcIo, with and without a status word from the chip. -->
+    <string name="passport_error_nfc_io_title">NFC communication error</string>
+    <string name="passport_error_nfc_io_message">Something went wrong talking to the passport chip.\n\nLift the phone off the passport, select Try again, then rest it back down.\n\nThings to try:\n• Check NFC is switched on\n• Take off any phone case\n• Try a different position on the passport cover\n• Check the passport chip is not damaged</string>
+    <string name="passport_error_nfc_io_message_with_code">Something went wrong talking to the passport chip.\n\nLift the phone off the passport, select Try again, then rest it back down.\n\n%1$s\n\nThings to try:\n• Check NFC is switched on\n• Take off any phone case\n• Try a different position on the passport cover\n• Check the passport chip is not damaged</string>
+
+    <!--
+      NoTagDetected. Ordered by how often each is actually the cause, and
+      written so each line is something to do rather than something to verify.
+      "No metal objects blocking signal" named a real problem too vaguely to
+      act on; a case with card slots or a magnet, and RFID-blocking wallets -
+      bought to stop exactly this - are the culprits worth naming.
+    -->
+    <string name="passport_error_no_tag_detected_title">Passport not detected</string>
+    <string name="passport_error_no_tag_detected_message">Could not find the chip.\n\nThings to try:\n• Move the phone - front cover, back cover, then the photo page\n• Take off any phone case, especially one with card slots or a magnet\n• Take the passport out of any RFID-blocking wallet\n• Check NFC is switched on</string>
+
+    <!-- TrustOrPassiveAuthFailed: read succeeded, verification did not. -->
+    <string name="passport_error_trust_failed_title">Document verification failed</string>
+    <string name="passport_error_trust_failed_message">Could not verify that the passport is genuine.\n\nThis could mean:\n• The certificate chain could not be validated\n• The passport\'s digital signature is invalid\n• The trust certificates are missing or out of date\n\nThe passport data was read, but it could not be confirmed as genuine.</string>
+
+    <!-- Unknown, with and without something useful from the cause. -->
+    <string name="passport_error_unknown_title">Reading failed</string>
+    <string name="passport_error_unknown_message">Something unexpected went wrong while reading the passport.\n\nPlease try again.</string>
+    <string name="passport_error_unknown_message_with_cause">Something unexpected went wrong while reading the passport.\n\n%1$s\n\nPlease try again.</string>
+
+</resources>

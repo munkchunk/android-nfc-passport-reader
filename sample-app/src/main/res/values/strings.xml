@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Every word the sample app shows. The library has its own strings.xml for the
+  copy it owns - the read failures - which this app resolves through
+  PassportReadException.titleRes/messageRes rather than restating here.
+
+  Kept in the order the user meets them: entry, scan, read, result.
+-->
+<resources>
+
+    <string name="app_name">Passport Reader</string>
+
+    <!-- Top app bar. The scan screen runs full bleed and has no bar. -->
+    <string name="bar_mrz_entry">Passport reader</string>
+    <string name="bar_reading">Reading passport</string>
+    <string name="bar_result">Passport data</string>
+
+    <!-- ============================ Entry ============================ -->
+
+    <string name="entry_title">Unlock the chip</string>
+    <string name="entry_intro">The MRZ (bottom 2 rows of letters and numbers) on the photo page holds the key. Scan the start of it, or type the three fields yourself.</string>
+    <string name="entry_scan">Scan with camera</string>
+    <string name="entry_or_type">OR TYPE THEM</string>
+    <string name="entry_read">Read passport</string>
+
+    <string name="entry_warning_no_nfc">This device has no NFC hardware, so a passport cannot be read.</string>
+    <string name="entry_warning_nfc_off">NFC is switched off. Turn it on to read a passport.</string>
+    <string name="entry_open_nfc_settings">Open NFC settings</string>
+
+    <string name="field_document_number">Document number</string>
+    <string name="field_date_of_birth_entry">Date of birth (YYMMDD)</string>
+    <string name="field_expiry_date_entry">Expiry date (YYMMDD)</string>
+
+    <!-- Field names, used inside validation messages. -->
+    <string name="field_name_date_of_birth">Date of birth</string>
+    <string name="field_name_expiry_date">Expiry date</string>
+
+    <!-- Validation. MrzFieldError maps to these. -->
+    <string name="validation_required">Required</string>
+    <string name="validation_document_too_long">At most 9 characters</string>
+    <string name="validation_document_alphabet">Only A-Z, 0-9 and &lt; are allowed</string>
+    <string name="validation_date_length">%1$s must be 6 digits (YYMMDD)</string>
+    <string name="validation_digits_only">Digits only</string>
+    <string name="validation_month_range">Month must be 01-12</string>
+    <string name="validation_day_range">Day must be 01-31</string>
+
+    <!-- Debug-only shortcuts; never present in a release build. -->
+    <string name="debug_shortcuts">DEBUG SHORTCUTS</string>
+    <string name="debug_previous">Previous (%1$s)</string>
+    <string name="debug_example">Example</string>
+
+    <!-- ============================ Scan ============================= -->
+
+    <string name="scan_hint_searching">Line the start of the MRZ up with the left of the box</string>
+    <string name="scan_hint_move_left">Move left - the start of the row is off the edge</string>
+    <string name="scan_hint_move_right">Move right to bring in more of the row</string>
+    <string name="scan_hint_move_back">Move back a little - the row is wider than the box</string>
+    <string name="scan_hint_unclear">Reading - hold steady, move a little closer or flatten the page</string>
+    <string name="scan_hint_confirming">Got it - checking</string>
+    <string name="scan_captured">Got it</string>
+    <string name="scan_enter_by_hand">Enter details by hand</string>
+
+    <string name="permission_camera_title">Camera access needed</string>
+    <string name="permission_camera_body">The camera reads the MRZ - row of letters and numbers along the bottom of the photo page. Nothing is recorded or sent anywhere.</string>
+    <string name="permission_camera_allow">Allow camera</string>
+
+    <!-- ============================ Read ============================= -->
+
+    <string name="read_heading_waiting">Rest the phone on your passport</string>
+    <string name="read_heading_reading">Keep it there</string>
+    <string name="read_heading_done">Done</string>
+    <string name="read_still_waiting_title">No passport found yet</string>
+    <string name="read_body_still_waiting">Lift the phone and lay it flat again, on the other cover, then on the photo page. If it is still not found, cancel and start again.</string>
+    <string name="read_body_waiting">Lay it flat on the front or back cover and hold still. If nothing happens after a few seconds, try the other side, then the photo page.</string>
+    <string name="read_body_reading">Hold still - this takes about ten seconds, try not to move the phone or passport.</string>
+    <string name="read_cancel">Cancel</string>
+    <string name="read_progress">PROGRESS</string>
+
+    <string name="stage_connecting">Connecting to the chip</string>
+    <string name="stage_authenticating">Unlocking with your details</string>
+    <string name="stage_reading_data">Reading document data</string>
+    <string name="stage_reading_photo">Reading the photograph</string>
+    <string name="stage_verifying">Checking signatures</string>
+
+    <string name="error_technical_details">TECHNICAL DETAILS</string>
+    <string name="error_try_again">Try again</string>
+    <string name="error_change_details">Change passport details</string>
+
+    <!-- =========================== Result ============================ -->
+
+    <string name="result_read_another">Read another passport</string>
+
+    <string name="panel_holder">Holder</string>
+    <string name="photo_content_description">Photograph stored on the passport chip</string>
+    <string name="photo_none">No photo</string>
+    <string name="field_surname">Surname</string>
+    <string name="field_given_names">Given names</string>
+    <string name="field_date_of_birth">Date of birth</string>
+    <string name="field_sex_nationality">Sex · Nationality</string>
+    <string name="field_date_of_expiry">DATE OF EXPIRY</string>
+    <string name="badge_expired">EXPIRED</string>
+
+    <!-- The optional groups, one panel each; the DG number sits beside the title. -->
+    <string name="panel_portrait">Portrait</string>
+    <string name="panel_signature">Signature</string>
+    <string name="panel_personal_details">Personal details</string>
+    <string name="panel_document_details">Document details</string>
+    <string name="panel_optional_details">Optional details</string>
+    <string name="panel_persons_to_notify">Persons to notify</string>
+    <string name="field_full_name">Full name</string>
+    <string name="field_other_names">Other names</string>
+    <string name="field_title">Title</string>
+    <string name="field_full_date_of_birth">Full date of birth</string>
+    <string name="field_place_of_birth">Place of birth</string>
+    <string name="field_permanent_address">Permanent address</string>
+    <string name="field_telephone">Telephone</string>
+    <string name="field_profession">Profession</string>
+    <string name="field_personal_number">Personal number</string>
+    <string name="field_personal_summary">Personal summary</string>
+    <string name="field_other_documents">Other valid travel documents</string>
+    <string name="field_custody">Custody information</string>
+    <string name="field_proof_of_citizenship">Proof of citizenship</string>
+    <string name="proof_of_citizenship_undecoded">Present, %1$d bytes · image could not be decoded</string>
+    <!-- DG13's contents are defined by each issuer, so only its size and bytes are shown. -->
+    <string name="optional_details_summary">Issuer-defined format · %1$d bytes</string>
+    <string name="field_contents">Contents</string>
+    <string name="field_name">Name</string>
+    <string name="field_address">Address</string>
+    <string name="field_recorded">Recorded</string>
+    <string name="field_issuing_authority">Issuing authority</string>
+    <string name="field_date_of_issue">Date of issue</string>
+    <string name="field_other_persons">Other people on the document</string>
+    <string name="field_endorsements">Endorsements and observations</string>
+    <string name="field_tax_exit">Tax or exit requirements</string>
+    <string name="field_personalised">Personalised</string>
+    <string name="field_personalisation_serial">Personalisation system serial</string>
+    <string name="image_front">Front of document</string>
+    <string name="image_rear">Rear of document</string>
+
+    <string name="panel_verification">Verification</string>
+    <string name="check_bac">Basic access control</string>
+    <string name="check_pace">Password authenticated connection</string>
+    <string name="check_ca">Chip authentication</string>
+    <string name="check_aa">Active authentication</string>
+    <string name="check_ds">Document signer</string>
+    <string name="check_chain">Certificate chain</string>
+    <string name="check_hashes">Data group hashes</string>
+    <string name="check_ta">Terminal authentication</string>
+    <string name="check_chain_detail">%1$d to trust anchor</string>
+    <string name="check_hash_mismatch">Does not match what the issuer signed: %1$s</string>
+    <string name="check_hash_unchecked">Not checked: %1$s</string>
+
+    <string name="panel_biometrics">Biometric data</string>
+    <string name="field_face_encoding">Face encoding</string>
+    <string name="encoding_iso19794">ISO/IEC 19794</string>
+    <string name="encoding_iso39794">ISO/IEC 39794</string>
+    <string name="face_encoding_undecoded">%1$s · image could not be decoded</string>
+    <!-- Face record details (DG2). Pose and quality appear only for ISO/IEC 39794 records, whose
+         published schema defines them; ISO/IEC 19794-5:2005's scaling is not freely published. -->
+    <string name="field_faces">Faces</string>
+    <string name="field_eye_colour">Eye colour</string>
+    <string name="field_hair_colour">Hair colour</string>
+    <string name="field_landmarks">Landmarks</string>
+    <string name="field_pose">Pose</string>
+    <string name="field_quality">Quality</string>
+    <string name="field_captured">Captured</string>
+    <string name="face_pose">yaw %1$s · pitch %2$s · roll %3$s</string>
+    <string name="face_angle">%1$d°</string>
+    <string name="face_angle_absent">—</string>
+    <string name="face_quality_score">%1$d/100</string>
+    <string name="face_quality_failed">could not be assessed</string>
+    <string name="colour_other">Other</string>
+    <string name="colour_black">Black</string>
+    <string name="colour_blue">Blue</string>
+    <string name="colour_brown">Brown</string>
+    <string name="colour_grey">Grey</string>
+    <string name="colour_green">Green</string>
+    <string name="colour_hazel">Hazel</string>
+    <string name="colour_multi">Multi-coloured</string>
+    <string name="colour_pink">Pink</string>
+    <string name="colour_bald">Bald</string>
+    <string name="colour_blonde">Blonde</string>
+    <string name="colour_white">White</string>
+    <string name="colour_red">Red</string>
+    <string name="colour_known_coloured">Coloured</string>
+
+    <string name="panel_signer">Document signer certificate</string>
+    <string name="cert_subject">Subject</string>
+    <string name="cert_issuer">Issuer</string>
+    <string name="cert_serial">Serial</string>
+    <string name="cert_valid">Valid</string>
+    <string name="cert_key">Key</string>
+    <string name="cert_signature">Signature</string>
+    <string name="cert_fingerprint">SHA-256</string>
+    <string name="cert_key_bits">%1$d bit</string>
+    <string name="panel_chain">Certificate chain</string>
+
+    <!-- Verdict words, read as "Document signer passed". -->
+    <string name="verdict_passed">passed</string>
+    <string name="verdict_failed">failed</string>
+    <string name="verdict_not_present">not on this chip</string>
+    <string name="verdict_not_checked">not checked</string>
+    <string name="verdict_unknown">could not be determined</string>
+
+    <!-- The one-line tally beside the Verification heading. -->
+    <plurals name="tally_failed">
+        <item quantity="one">%1$d failed</item>
+        <item quantity="other">%1$d failed</item>
+    </plurals>
+    <plurals name="tally_passed">
+        <item quantity="one">%1$d passed</item>
+        <item quantity="other">%1$d passed</item>
+    </plurals>
+    <plurals name="tally_unknown">
+        <item quantity="one">%1$d unknown</item>
+        <item quantity="other">%1$d unknown</item>
+    </plurals>
+    <plurals name="tally_not_available">
+        <item quantity="one">%1$d not available</item>
+        <item quantity="other">%1$d not available</item>
+    </plurals>
+
+</resources>

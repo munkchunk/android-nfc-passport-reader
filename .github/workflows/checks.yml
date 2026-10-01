@@ -1,0 +1,43 @@
+name: Checks
+
+# tools/checks.sh is everything that can be decided without a passport and a
+# phone: both modules built, unit tests, lint, detekt, the API check and the
+# licensing checks. It cannot test the chip read path; see CONTRIBUTING.md.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: checks-${{ github.ref }}
+  # A newer push supersedes a pull request's run; every commit on main keeps its own.
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      # Actions are pinned to a commit, so a moved tag cannot change what runs.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: actions/setup-java@de7274f081f381c8f8158605e0321c36c376e2e6 # v6.0.1
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - uses: gradle/actions/setup-gradle@3f5f9adaf7d9fecd50b5935e54106014257a94e6 # v6.4.0
+        with:
+          # The open-source cache on GitHub's own Actions cache, rather than the
+          # default commercial caching service.
+          cache-provider: basic
+
+      # The runner image carries the Android SDK and sets ANDROID_HOME, so no
+      # local.properties is needed. The private-names check skips here: its
+      # patterns are deliberately kept out of the repository.
+      - name: Run checks
+        run: tools/checks.sh

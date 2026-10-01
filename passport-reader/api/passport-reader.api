@@ -1,0 +1,898 @@
+public final class io/github/munkchunk/passportreader/NfcPassportReader {
+	public static final field Companion Lio/github/munkchunk/passportreader/NfcPassportReader$Companion;
+	public fun <init> (Landroid/content/Context;Lio/github/munkchunk/passportreader/model/error/NfcErrorReporter;Lio/github/munkchunk/passportreader/timing/NfcReadTimingConfig;)V
+	public synthetic fun <init> (Landroid/content/Context;Lio/github/munkchunk/passportreader/model/error/NfcErrorReporter;Lio/github/munkchunk/passportreader/timing/NfcReadTimingConfig;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun isNfcAvailable ()Z
+	public final fun isNfcEnabled ()Z
+	public final fun readPassport-hUnOzRk (Landroid/nfc/Tag;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun readPassport-hUnOzRk$default (Lio/github/munkchunk/passportreader/NfcPassportReader;Landroid/nfc/Tag;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class io/github/munkchunk/passportreader/NfcPassportReader$Companion {
+}
+
+public final class io/github/munkchunk/passportreader/data/AdditionalDocumentDetails : android/os/Parcelable {
+	public static final field CREATOR Landroid/os/Parcelable$Creator;
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Landroid/graphics/Bitmap;Landroid/graphics/Bitmap;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;ILjava/util/List;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Landroid/graphics/Bitmap;Landroid/graphics/Bitmap;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;ILjava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun describeContents ()I
+	public final fun getDateAndTimeOfPersonalization ()Ljava/lang/String;
+	public final fun getDateOfIssue ()Ljava/lang/String;
+	public final fun getEndorsementsAndObservations ()Ljava/lang/String;
+	public final fun getImageOfFront ()Landroid/graphics/Bitmap;
+	public final fun getImageOfRear ()Landroid/graphics/Bitmap;
+	public final fun getIssuingAuthority ()Ljava/lang/String;
+	public final fun getNamesOfOtherPersons ()Ljava/util/List;
+	public final fun getPersonalizationSystemSerialNumber ()Ljava/lang/String;
+	public final fun getTag ()I
+	public final fun getTagPresenceList ()Ljava/util/List;
+	public final fun getTaxOrExitRequirements ()Ljava/lang/String;
+	public final fun setDateAndTimeOfPersonalization (Ljava/lang/String;)V
+	public final fun setDateOfIssue (Ljava/lang/String;)V
+	public final fun setEndorsementsAndObservations (Ljava/lang/String;)V
+	public final fun setImageOfFront (Landroid/graphics/Bitmap;)V
+	public final fun setImageOfRear (Landroid/graphics/Bitmap;)V
+	public final fun setIssuingAuthority (Ljava/lang/String;)V
+	public final fun setNamesOfOtherPersons (Ljava/util/List;)V
+	public final fun setPersonalizationSystemSerialNumber (Ljava/lang/String;)V
+	public final fun setTag (I)V
+	public final fun setTagPresenceList (Ljava/util/List;)V
+	public final fun setTaxOrExitRequirements (Ljava/lang/String;)V
+	public fun writeToParcel (Landroid/os/Parcel;I)V
+}
+
+public final class io/github/munkchunk/passportreader/data/AdditionalDocumentDetails$Creator : android/os/Parcelable$Creator {
+	public fun <init> ()V
+	public final fun createFromParcel (Landroid/os/Parcel;)Lio/github/munkchunk/passportreader/data/AdditionalDocumentDetails;
+	public synthetic fun createFromParcel (Landroid/os/Parcel;)Ljava/lang/Object;
+	public final fun newArray (I)[Lio/github/munkchunk/passportreader/data/AdditionalDocumentDetails;
+	public synthetic fun newArray (I)[Ljava/lang/Object;
+}
+
+public final class io/github/munkchunk/passportreader/data/AdditionalPersonDetails : android/os/Parcelable {
+	public static final field CREATOR Landroid/os/Parcelable$Creator;
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;[BILjava/util/List;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;[BILjava/util/List;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun describeContents ()I
+	public final fun getCustodyInformation ()Ljava/lang/String;
+	public final fun getFullDateOfBirth ()Ljava/lang/String;
+	public final fun getNameOfHolder ()Ljava/lang/String;
+	public final fun getOtherNames ()Ljava/util/List;
+	public final fun getOtherValidTDNumbers ()Ljava/util/List;
+	public final fun getPermanentAddress ()Ljava/util/List;
+	public final fun getPersonalNumber ()Ljava/lang/String;
+	public final fun getPersonalSummary ()Ljava/lang/String;
+	public final fun getPlaceOfBirth ()Ljava/util/List;
+	public final fun getProfession ()Ljava/lang/String;
+	public final fun getProofOfCitizenship ()[B
+	public final fun getTag ()I
+	public final fun getTagPresenceList ()Ljava/util/List;
+	public final fun getTelephone ()Ljava/lang/String;
+	public final fun getTitle ()Ljava/lang/String;
+	public final fun setCustodyInformation (Ljava/lang/String;)V
+	public final fun setFullDateOfBirth (Ljava/lang/String;)V
+	public final fun setNameOfHolder (Ljava/lang/String;)V
+	public final fun setOtherNames (Ljava/util/List;)V
+	public final fun setOtherValidTDNumbers (Ljava/util/List;)V
+	public final fun setPermanentAddress (Ljava/util/List;)V
+	public final fun setPersonalNumber (Ljava/lang/String;)V
+	public final fun setPersonalSummary (Ljava/lang/String;)V
+	public final fun setPlaceOfBirth (Ljava/util/List;)V
+	public final fun setProfession (Ljava/lang/String;)V
+	public final fun setProofOfCitizenship ([B)V
+	public final fun setTag (I)V
+	public final fun setTagPresenceList (Ljava/util/List;)V
+	public final fun setTelephone (Ljava/lang/String;)V
+	public final fun setTitle (Ljava/lang/String;)V
+	public fun writeToParcel (Landroid/os/Parcel;I)V
+}
+
+public final class io/github/munkchunk/passportreader/data/AdditionalPersonDetails$Creator : android/os/Parcelable$Creator {
+	public fun <init> ()V
+	public final fun createFromParcel (Landroid/os/Parcel;)Lio/github/munkchunk/passportreader/data/AdditionalPersonDetails;
+	public synthetic fun createFromParcel (Landroid/os/Parcel;)Ljava/lang/Object;
+	public final fun newArray (I)[Lio/github/munkchunk/passportreader/data/AdditionalPersonDetails;
+	public synthetic fun newArray (I)[Ljava/lang/Object;
+}
+
+public final class io/github/munkchunk/passportreader/data/MrzData : android/os/Parcelable {
+	public static final field CREATOR Landroid/os/Parcelable$Creator;
+	public static final field Companion Lio/github/munkchunk/passportreader/data/MrzData$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public fun describeContents ()I
+	public final fun getFull ()Ljava/lang/String;
+	public final fun getLine1 ()Ljava/lang/String;
+	public final fun getLine2 ()Ljava/lang/String;
+	public fun writeToParcel (Landroid/os/Parcel;I)V
+}
+
+public final class io/github/munkchunk/passportreader/data/MrzData$Companion {
+}
+
+public final class io/github/munkchunk/passportreader/data/Passport : android/os/Parcelable {
+	public static final field CREATOR Landroid/os/Parcelable$Creator;
+	public fun <init> ()V
+	public fun <init> ([BLandroid/graphics/Bitmap;Lio/github/munkchunk/passportreader/model/BiometricEncoding;Ljava/util/List;Landroid/graphics/Bitmap;Landroid/graphics/Bitmap;Ljava/util/List;Lio/github/munkchunk/passportreader/data/PersonDetails;Lio/github/munkchunk/passportreader/data/AdditionalPersonDetails;Lio/github/munkchunk/passportreader/data/AdditionalDocumentDetails;[BLjava/util/List;Lio/github/munkchunk/passportreader/model/DocumentFeatures;Lio/github/munkchunk/passportreader/data/MrzData;Lio/github/munkchunk/passportreader/model/CertificateDetails;Ljava/util/List;Lio/github/munkchunk/passportreader/model/VerificationReport;)V
+	public synthetic fun <init> ([BLandroid/graphics/Bitmap;Lio/github/munkchunk/passportreader/model/BiometricEncoding;Ljava/util/List;Landroid/graphics/Bitmap;Landroid/graphics/Bitmap;Ljava/util/List;Lio/github/munkchunk/passportreader/data/PersonDetails;Lio/github/munkchunk/passportreader/data/AdditionalPersonDetails;Lio/github/munkchunk/passportreader/data/AdditionalDocumentDetails;[BLjava/util/List;Lio/github/munkchunk/passportreader/model/DocumentFeatures;Lio/github/munkchunk/passportreader/data/MrzData;Lio/github/munkchunk/passportreader/model/CertificateDetails;Ljava/util/List;Lio/github/munkchunk/passportreader/model/VerificationReport;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun describeContents ()I
+	public final fun getAdditionalDocumentDetails ()Lio/github/munkchunk/passportreader/data/AdditionalDocumentDetails;
+	public final fun getAdditionalPersonDetails ()Lio/github/munkchunk/passportreader/data/AdditionalPersonDetails;
+	public final fun getChainCertificates ()Ljava/util/List;
+	public final fun getDocumentSigner ()Lio/github/munkchunk/passportreader/model/CertificateDetails;
+	public final fun getFace ()Landroid/graphics/Bitmap;
+	public final fun getFaceDetails ()Ljava/util/List;
+	public final fun getFaceEncoding ()Lio/github/munkchunk/passportreader/model/BiometricEncoding;
+	public final fun getFeatures ()Lio/github/munkchunk/passportreader/model/DocumentFeatures;
+	public final fun getFingerprints ()Ljava/util/List;
+	public final fun getMrz ()Lio/github/munkchunk/passportreader/data/MrzData;
+	public final fun getOptionalDetails ()[B
+	public final fun getPersonDetails ()Lio/github/munkchunk/passportreader/data/PersonDetails;
+	public final fun getPersonsToNotify ()Ljava/util/List;
+	public final fun getPortrait ()Landroid/graphics/Bitmap;
+	public final fun getSignature ()Landroid/graphics/Bitmap;
+	public final fun getSodBytes ()[B
+	public final fun getVerificationReport ()Lio/github/munkchunk/passportreader/model/VerificationReport;
+	public final fun setAdditionalDocumentDetails (Lio/github/munkchunk/passportreader/data/AdditionalDocumentDetails;)V
+	public final fun setAdditionalPersonDetails (Lio/github/munkchunk/passportreader/data/AdditionalPersonDetails;)V
+	public final fun setChainCertificates (Ljava/util/List;)V
+	public final fun setDocumentSigner (Lio/github/munkchunk/passportreader/model/CertificateDetails;)V
+	public final fun setFace (Landroid/graphics/Bitmap;)V
+	public final fun setFaceDetails (Ljava/util/List;)V
+	public final fun setFaceEncoding (Lio/github/munkchunk/passportreader/model/BiometricEncoding;)V
+	public final fun setFeatures (Lio/github/munkchunk/passportreader/model/DocumentFeatures;)V
+	public final fun setFingerprints (Ljava/util/List;)V
+	public final fun setMrz (Lio/github/munkchunk/passportreader/data/MrzData;)V
+	public final fun setOptionalDetails ([B)V
+	public final fun setPersonDetails (Lio/github/munkchunk/passportreader/data/PersonDetails;)V
+	public final fun setPersonsToNotify (Ljava/util/List;)V
+	public final fun setPortrait (Landroid/graphics/Bitmap;)V
+	public final fun setSignature (Landroid/graphics/Bitmap;)V
+	public final fun setSodBytes ([B)V
+	public final fun setVerificationReport (Lio/github/munkchunk/passportreader/model/VerificationReport;)V
+	public fun writeToParcel (Landroid/os/Parcel;I)V
+}
+
+public final class io/github/munkchunk/passportreader/data/Passport$Creator : android/os/Parcelable$Creator {
+	public fun <init> ()V
+	public final fun createFromParcel (Landroid/os/Parcel;)Lio/github/munkchunk/passportreader/data/Passport;
+	public synthetic fun createFromParcel (Landroid/os/Parcel;)Ljava/lang/Object;
+	public final fun newArray (I)[Lio/github/munkchunk/passportreader/data/Passport;
+	public synthetic fun newArray (I)[Ljava/lang/Object;
+}
+
+public final class io/github/munkchunk/passportreader/data/PersonDetails : android/os/Parcelable {
+	public static final field CREATOR Landroid/os/Parcelable$Creator;
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lio/github/munkchunk/passportreader/model/Sex;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lio/github/munkchunk/passportreader/model/Sex;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun describeContents ()I
+	public final fun getDateOfBirth ()Ljava/lang/String;
+	public final fun getDateOfExpiry ()Ljava/lang/String;
+	public final fun getDocumentCode ()Ljava/lang/String;
+	public final fun getDocumentNumber ()Ljava/lang/String;
+	public final fun getIssuingState ()Ljava/lang/String;
+	public final fun getNationality ()Ljava/lang/String;
+	public final fun getOptionalData1 ()Ljava/lang/String;
+	public final fun getOptionalData2 ()Ljava/lang/String;
+	public final fun getPrimaryIdentifier ()Ljava/lang/String;
+	public final fun getSecondaryIdentifier ()Ljava/lang/String;
+	public final fun getSex ()Lio/github/munkchunk/passportreader/model/Sex;
+	public final fun setDateOfBirth (Ljava/lang/String;)V
+	public final fun setDateOfExpiry (Ljava/lang/String;)V
+	public final fun setDocumentCode (Ljava/lang/String;)V
+	public final fun setDocumentNumber (Ljava/lang/String;)V
+	public final fun setIssuingState (Ljava/lang/String;)V
+	public final fun setNationality (Ljava/lang/String;)V
+	public final fun setOptionalData1 (Ljava/lang/String;)V
+	public final fun setOptionalData2 (Ljava/lang/String;)V
+	public final fun setPrimaryIdentifier (Ljava/lang/String;)V
+	public final fun setSecondaryIdentifier (Ljava/lang/String;)V
+	public final fun setSex (Lio/github/munkchunk/passportreader/model/Sex;)V
+	public fun writeToParcel (Landroid/os/Parcel;I)V
+}
+
+public final class io/github/munkchunk/passportreader/data/PersonDetails$Creator : android/os/Parcelable$Creator {
+	public fun <init> ()V
+	public final fun createFromParcel (Landroid/os/Parcel;)Lio/github/munkchunk/passportreader/data/PersonDetails;
+	public synthetic fun createFromParcel (Landroid/os/Parcel;)Ljava/lang/Object;
+	public final fun newArray (I)[Lio/github/munkchunk/passportreader/data/PersonDetails;
+	public synthetic fun newArray (I)[Ljava/lang/Object;
+}
+
+public final class io/github/munkchunk/passportreader/data/PersonToNotify : android/os/Parcelable {
+	public static final field CREATOR Landroid/os/Parcelable$Creator;
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun describeContents ()I
+	public final fun getAddress ()Ljava/lang/String;
+	public final fun getDateRecorded ()Ljava/lang/String;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getTelephone ()Ljava/lang/String;
+	public final fun setAddress (Ljava/lang/String;)V
+	public final fun setDateRecorded (Ljava/lang/String;)V
+	public final fun setName (Ljava/lang/String;)V
+	public final fun setTelephone (Ljava/lang/String;)V
+	public fun writeToParcel (Landroid/os/Parcel;I)V
+}
+
+public final class io/github/munkchunk/passportreader/data/PersonToNotify$Creator : android/os/Parcelable$Creator {
+	public fun <init> ()V
+	public final fun createFromParcel (Landroid/os/Parcel;)Lio/github/munkchunk/passportreader/data/PersonToNotify;
+	public synthetic fun createFromParcel (Landroid/os/Parcel;)Ljava/lang/Object;
+	public final fun newArray (I)[Lio/github/munkchunk/passportreader/data/PersonToNotify;
+	public synthetic fun newArray (I)[Ljava/lang/Object;
+}
+
+public final class io/github/munkchunk/passportreader/model/BiometricEncoding : java/lang/Enum, android/os/Parcelable {
+	public static final field CREATOR Landroid/os/Parcelable$Creator;
+	public static final field ISO_19794 Lio/github/munkchunk/passportreader/model/BiometricEncoding;
+	public static final field ISO_39794 Lio/github/munkchunk/passportreader/model/BiometricEncoding;
+	public fun describeContents ()I
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/munkchunk/passportreader/model/BiometricEncoding;
+	public static fun values ()[Lio/github/munkchunk/passportreader/model/BiometricEncoding;
+	public fun writeToParcel (Landroid/os/Parcel;I)V
+}
+
+public final class io/github/munkchunk/passportreader/model/BiometricEncoding$Creator : android/os/Parcelable$Creator {
+	public fun <init> ()V
+	public final fun createFromParcel (Landroid/os/Parcel;)Lio/github/munkchunk/passportreader/model/BiometricEncoding;
+	public synthetic fun createFromParcel (Landroid/os/Parcel;)Ljava/lang/Object;
+	public final fun newArray (I)[Lio/github/munkchunk/passportreader/model/BiometricEncoding;
+	public synthetic fun newArray (I)[Ljava/lang/Object;
+}
+
+public final class io/github/munkchunk/passportreader/model/CertificateDetails : android/os/Parcelable {
+	public static final field CREATOR Landroid/os/Parcelable$Creator;
+	public fun <init> (Lio/github/munkchunk/passportreader/model/CertificateRole;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JJLjava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Lio/github/munkchunk/passportreader/model/CertificateRole;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JJLjava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lio/github/munkchunk/passportreader/model/CertificateRole;
+	public final fun component10 ()Ljava/lang/String;
+	public final fun component11 ()Ljava/lang/String;
+	public final fun component12 ()Ljava/lang/String;
+	public final fun component13 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()J
+	public final fun component7 ()J
+	public final fun component8 ()Ljava/lang/String;
+	public final fun component9 ()Ljava/lang/Integer;
+	public final fun copy (Lio/github/munkchunk/passportreader/model/CertificateRole;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JJLjava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lio/github/munkchunk/passportreader/model/CertificateDetails;
+	public static synthetic fun copy$default (Lio/github/munkchunk/passportreader/model/CertificateDetails;Lio/github/munkchunk/passportreader/model/CertificateRole;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JJLjava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lio/github/munkchunk/passportreader/model/CertificateDetails;
+	public fun describeContents ()I
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getEcCurve ()Ljava/lang/String;
+	public final fun getIssuerDn ()Ljava/lang/String;
+	public final fun getKeySizeBits ()Ljava/lang/Integer;
+	public final fun getPublicKeyAlgorithm ()Ljava/lang/String;
+	public final fun getRole ()Lio/github/munkchunk/passportreader/model/CertificateRole;
+	public final fun getSerialNumberHex ()Ljava/lang/String;
+	public final fun getSha1Fingerprint ()Ljava/lang/String;
+	public final fun getSha256Fingerprint ()Ljava/lang/String;
+	public final fun getSignatureAlgorithm ()Ljava/lang/String;
+	public final fun getSubjectCountry ()Ljava/lang/String;
+	public final fun getSubjectDn ()Ljava/lang/String;
+	public final fun getValidFromEpochMs ()J
+	public final fun getValidUntilEpochMs ()J
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+	public fun writeToParcel (Landroid/os/Parcel;I)V
+}
+
+public final class io/github/munkchunk/passportreader/model/CertificateDetails$Creator : android/os/Parcelable$Creator {
+	public fun <init> ()V
+	public final fun createFromParcel (Landroid/os/Parcel;)Lio/github/munkchunk/passportreader/model/CertificateDetails;
+	public synthetic fun createFromParcel (Landroid/os/Parcel;)Ljava/lang/Object;
+	public final fun newArray (I)[Lio/github/munkchunk/passportreader/model/CertificateDetails;
+	public synthetic fun newArray (I)[Ljava/lang/Object;
+}
+
+public final class io/github/munkchunk/passportreader/model/CertificateRole : java/lang/Enum, android/os/Parcelable {
+	public static final field CREATOR Landroid/os/Parcelable$Creator;
+	public static final field CSCA Lio/github/munkchunk/passportreader/model/CertificateRole;
+	public static final field DOCUMENT_SIGNER Lio/github/munkchunk/passportreader/model/CertificateRole;
+	public static final field LINK Lio/github/munkchunk/passportreader/model/CertificateRole;
+	public fun describeContents ()I
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/munkchunk/passportreader/model/CertificateRole;
+	public static fun values ()[Lio/github/munkchunk/passportreader/model/CertificateRole;
+	public fun writeToParcel (Landroid/os/Parcel;I)V
+}
+
+public final class io/github/munkchunk/passportreader/model/CertificateRole$Creator : android/os/Parcelable$Creator {
+	public fun <init> ()V
+	public final fun createFromParcel (Landroid/os/Parcel;)Lio/github/munkchunk/passportreader/model/CertificateRole;
+	public synthetic fun createFromParcel (Landroid/os/Parcel;)Ljava/lang/Object;
+	public final fun newArray (I)[Lio/github/munkchunk/passportreader/model/CertificateRole;
+	public synthetic fun newArray (I)[Ljava/lang/Object;
+}
+
+public final class io/github/munkchunk/passportreader/model/CheckResult : android/os/Parcelable {
+	public static final field CREATOR Landroid/os/Parcelable$Creator;
+	public fun <init> (Lio/github/munkchunk/passportreader/model/CheckVerdict;Ljava/lang/String;)V
+	public synthetic fun <init> (Lio/github/munkchunk/passportreader/model/CheckVerdict;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lio/github/munkchunk/passportreader/model/CheckVerdict;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Lio/github/munkchunk/passportreader/model/CheckVerdict;Ljava/lang/String;)Lio/github/munkchunk/passportreader/model/CheckResult;
+	public static synthetic fun copy$default (Lio/github/munkchunk/passportreader/model/CheckResult;Lio/github/munkchunk/passportreader/model/CheckVerdict;Ljava/lang/String;ILjava/lang/Object;)Lio/github/munkchunk/passportreader/model/CheckResult;
+	public fun describeContents ()I
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getReason ()Ljava/lang/String;
+	public final fun getVerdict ()Lio/github/munkchunk/passportreader/model/CheckVerdict;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+	public fun writeToParcel (Landroid/os/Parcel;I)V
+}
+
+public final class io/github/munkchunk/passportreader/model/CheckResult$Creator : android/os/Parcelable$Creator {
+	public fun <init> ()V
+	public final fun createFromParcel (Landroid/os/Parcel;)Lio/github/munkchunk/passportreader/model/CheckResult;
+	public synthetic fun createFromParcel (Landroid/os/Parcel;)Ljava/lang/Object;
+	public final fun newArray (I)[Lio/github/munkchunk/passportreader/model/CheckResult;
+	public synthetic fun newArray (I)[Ljava/lang/Object;
+}
+
+public final class io/github/munkchunk/passportreader/model/CheckVerdict : java/lang/Enum, android/os/Parcelable {
+	public static final field CREATOR Landroid/os/Parcelable$Creator;
+	public static final field FAILED Lio/github/munkchunk/passportreader/model/CheckVerdict;
+	public static final field NOT_CHECKED Lio/github/munkchunk/passportreader/model/CheckVerdict;
+	public static final field NOT_PRESENT Lio/github/munkchunk/passportreader/model/CheckVerdict;
+	public static final field SUCCEEDED Lio/github/munkchunk/passportreader/model/CheckVerdict;
+	public static final field UNKNOWN Lio/github/munkchunk/passportreader/model/CheckVerdict;
+	public fun describeContents ()I
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/munkchunk/passportreader/model/CheckVerdict;
+	public static fun values ()[Lio/github/munkchunk/passportreader/model/CheckVerdict;
+	public fun writeToParcel (Landroid/os/Parcel;I)V
+}
+
+public final class io/github/munkchunk/passportreader/model/CheckVerdict$Creator : android/os/Parcelable$Creator {
+	public fun <init> ()V
+	public final fun createFromParcel (Landroid/os/Parcel;)Lio/github/munkchunk/passportreader/model/CheckVerdict;
+	public synthetic fun createFromParcel (Landroid/os/Parcel;)Ljava/lang/Object;
+	public final fun newArray (I)[Lio/github/munkchunk/passportreader/model/CheckVerdict;
+	public synthetic fun newArray (I)[Ljava/lang/Object;
+}
+
+public final class io/github/munkchunk/passportreader/model/DataGroupHash : android/os/Parcelable {
+	public static final field CREATOR Landroid/os/Parcelable$Creator;
+	public fun <init> (ILjava/lang/String;Ljava/lang/String;Z)V
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()I
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Z
+	public final fun copy (ILjava/lang/String;Ljava/lang/String;Z)Lio/github/munkchunk/passportreader/model/DataGroupHash;
+	public static synthetic fun copy$default (Lio/github/munkchunk/passportreader/model/DataGroupHash;ILjava/lang/String;Ljava/lang/String;ZILjava/lang/Object;)Lio/github/munkchunk/passportreader/model/DataGroupHash;
+	public fun describeContents ()I
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getActualHex ()Ljava/lang/String;
+	public final fun getCompared ()Z
+	public final fun getDataGroup ()I
+	public final fun getExpectedHex ()Ljava/lang/String;
+	public final fun getMatches ()Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+	public fun writeToParcel (Landroid/os/Parcel;I)V
+}
+
+public final class io/github/munkchunk/passportreader/model/DataGroupHash$Creator : android/os/Parcelable$Creator {
+	public fun <init> ()V
+	public final fun createFromParcel (Landroid/os/Parcel;)Lio/github/munkchunk/passportreader/model/DataGroupHash;
+	public synthetic fun createFromParcel (Landroid/os/Parcel;)Ljava/lang/Object;
+	public final fun newArray (I)[Lio/github/munkchunk/passportreader/model/DataGroupHash;
+	public synthetic fun newArray (I)[Ljava/lang/Object;
+}
+
+public final class io/github/munkchunk/passportreader/model/DocumentFeatures : android/os/Parcelable {
+	public static final field CREATOR Landroid/os/Parcelable$Creator;
+	public fun <init> ()V
+	public fun <init> (Lio/github/munkchunk/passportreader/model/FeatureSupport;Lio/github/munkchunk/passportreader/model/FeatureSupport;Lio/github/munkchunk/passportreader/model/FeatureSupport;Lio/github/munkchunk/passportreader/model/FeatureSupport;Lio/github/munkchunk/passportreader/model/FeatureSupport;)V
+	public synthetic fun <init> (Lio/github/munkchunk/passportreader/model/FeatureSupport;Lio/github/munkchunk/passportreader/model/FeatureSupport;Lio/github/munkchunk/passportreader/model/FeatureSupport;Lio/github/munkchunk/passportreader/model/FeatureSupport;Lio/github/munkchunk/passportreader/model/FeatureSupport;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lio/github/munkchunk/passportreader/model/FeatureSupport;
+	public final fun component2 ()Lio/github/munkchunk/passportreader/model/FeatureSupport;
+	public final fun component3 ()Lio/github/munkchunk/passportreader/model/FeatureSupport;
+	public final fun component4 ()Lio/github/munkchunk/passportreader/model/FeatureSupport;
+	public final fun component5 ()Lio/github/munkchunk/passportreader/model/FeatureSupport;
+	public final fun copy (Lio/github/munkchunk/passportreader/model/FeatureSupport;Lio/github/munkchunk/passportreader/model/FeatureSupport;Lio/github/munkchunk/passportreader/model/FeatureSupport;Lio/github/munkchunk/passportreader/model/FeatureSupport;Lio/github/munkchunk/passportreader/model/FeatureSupport;)Lio/github/munkchunk/passportreader/model/DocumentFeatures;
+	public static synthetic fun copy$default (Lio/github/munkchunk/passportreader/model/DocumentFeatures;Lio/github/munkchunk/passportreader/model/FeatureSupport;Lio/github/munkchunk/passportreader/model/FeatureSupport;Lio/github/munkchunk/passportreader/model/FeatureSupport;Lio/github/munkchunk/passportreader/model/FeatureSupport;Lio/github/munkchunk/passportreader/model/FeatureSupport;ILjava/lang/Object;)Lio/github/munkchunk/passportreader/model/DocumentFeatures;
+	public fun describeContents ()I
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getActiveAuthentication ()Lio/github/munkchunk/passportreader/model/FeatureSupport;
+	public final fun getBasicAccessControl ()Lio/github/munkchunk/passportreader/model/FeatureSupport;
+	public final fun getChipAuthentication ()Lio/github/munkchunk/passportreader/model/FeatureSupport;
+	public final fun getPace ()Lio/github/munkchunk/passportreader/model/FeatureSupport;
+	public final fun getSupportsActiveAuthentication ()Z
+	public final fun getSupportsBasicAccessControl ()Z
+	public final fun getSupportsChipAuthentication ()Z
+	public final fun getSupportsPace ()Z
+	public final fun getSupportsTerminalAuthentication ()Z
+	public final fun getTerminalAuthentication ()Lio/github/munkchunk/passportreader/model/FeatureSupport;
+	public fun hashCode ()I
+	public final fun setActiveAuthentication (Lio/github/munkchunk/passportreader/model/FeatureSupport;)V
+	public final fun setBasicAccessControl (Lio/github/munkchunk/passportreader/model/FeatureSupport;)V
+	public final fun setChipAuthentication (Lio/github/munkchunk/passportreader/model/FeatureSupport;)V
+	public final fun setPace (Lio/github/munkchunk/passportreader/model/FeatureSupport;)V
+	public final fun setTerminalAuthentication (Lio/github/munkchunk/passportreader/model/FeatureSupport;)V
+	public fun toString ()Ljava/lang/String;
+	public fun writeToParcel (Landroid/os/Parcel;I)V
+}
+
+public final class io/github/munkchunk/passportreader/model/DocumentFeatures$Creator : android/os/Parcelable$Creator {
+	public fun <init> ()V
+	public final fun createFromParcel (Landroid/os/Parcel;)Lio/github/munkchunk/passportreader/model/DocumentFeatures;
+	public synthetic fun createFromParcel (Landroid/os/Parcel;)Ljava/lang/Object;
+	public final fun newArray (I)[Lio/github/munkchunk/passportreader/model/DocumentFeatures;
+	public synthetic fun newArray (I)[Ljava/lang/Object;
+}
+
+public final class io/github/munkchunk/passportreader/model/EyeColour : java/lang/Enum, android/os/Parcelable {
+	public static final field BLACK Lio/github/munkchunk/passportreader/model/EyeColour;
+	public static final field BLUE Lio/github/munkchunk/passportreader/model/EyeColour;
+	public static final field BROWN Lio/github/munkchunk/passportreader/model/EyeColour;
+	public static final field CREATOR Landroid/os/Parcelable$Creator;
+	public static final field GREEN Lio/github/munkchunk/passportreader/model/EyeColour;
+	public static final field GREY Lio/github/munkchunk/passportreader/model/EyeColour;
+	public static final field HAZEL Lio/github/munkchunk/passportreader/model/EyeColour;
+	public static final field MULTI_COLOURED Lio/github/munkchunk/passportreader/model/EyeColour;
+	public static final field OTHER Lio/github/munkchunk/passportreader/model/EyeColour;
+	public static final field PINK Lio/github/munkchunk/passportreader/model/EyeColour;
+	public static final field UNKNOWN Lio/github/munkchunk/passportreader/model/EyeColour;
+	public static final field UNSPECIFIED Lio/github/munkchunk/passportreader/model/EyeColour;
+	public fun describeContents ()I
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/munkchunk/passportreader/model/EyeColour;
+	public static fun values ()[Lio/github/munkchunk/passportreader/model/EyeColour;
+	public fun writeToParcel (Landroid/os/Parcel;I)V
+}
+
+public final class io/github/munkchunk/passportreader/model/EyeColour$Creator : android/os/Parcelable$Creator {
+	public fun <init> ()V
+	public final fun createFromParcel (Landroid/os/Parcel;)Lio/github/munkchunk/passportreader/model/EyeColour;
+	public synthetic fun createFromParcel (Landroid/os/Parcel;)Ljava/lang/Object;
+	public final fun newArray (I)[Lio/github/munkchunk/passportreader/model/EyeColour;
+	public synthetic fun newArray (I)[Ljava/lang/Object;
+}
+
+public final class io/github/munkchunk/passportreader/model/FaceDetails : android/os/Parcelable {
+	public static final field CREATOR Landroid/os/Parcelable$Creator;
+	public fun <init> (Lio/github/munkchunk/passportreader/model/BiometricEncoding;Lio/github/munkchunk/passportreader/model/EyeColour;Lio/github/munkchunk/passportreader/model/HairColour;ILio/github/munkchunk/passportreader/model/FacePose;Ljava/util/List;Ljava/util/List;Ljava/lang/Integer;Ljava/lang/String;)V
+	public synthetic fun <init> (Lio/github/munkchunk/passportreader/model/BiometricEncoding;Lio/github/munkchunk/passportreader/model/EyeColour;Lio/github/munkchunk/passportreader/model/HairColour;ILio/github/munkchunk/passportreader/model/FacePose;Ljava/util/List;Ljava/util/List;Ljava/lang/Integer;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun describeContents ()I
+	public final fun getCaptureDate ()Ljava/lang/String;
+	public final fun getEncoding ()Lio/github/munkchunk/passportreader/model/BiometricEncoding;
+	public final fun getEyeColour ()Lio/github/munkchunk/passportreader/model/EyeColour;
+	public final fun getHairColour ()Lio/github/munkchunk/passportreader/model/HairColour;
+	public final fun getLandmarkCount ()I
+	public final fun getPose ()Lio/github/munkchunk/passportreader/model/FacePose;
+	public final fun getQualityScores ()Ljava/util/List;
+	public final fun getRawPose ()Ljava/util/List;
+	public final fun getRawQuality ()Ljava/lang/Integer;
+	public fun writeToParcel (Landroid/os/Parcel;I)V
+}
+
+public final class io/github/munkchunk/passportreader/model/FaceDetails$Creator : android/os/Parcelable$Creator {
+	public fun <init> ()V
+	public final fun createFromParcel (Landroid/os/Parcel;)Lio/github/munkchunk/passportreader/model/FaceDetails;
+	public synthetic fun createFromParcel (Landroid/os/Parcel;)Ljava/lang/Object;
+	public final fun newArray (I)[Lio/github/munkchunk/passportreader/model/FaceDetails;
+	public synthetic fun newArray (I)[Ljava/lang/Object;
+}
+
+public final class io/github/munkchunk/passportreader/model/FacePose : android/os/Parcelable {
+	public static final field CREATOR Landroid/os/Parcelable$Creator;
+	public fun <init> (Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;)V
+	public final fun component1 ()Ljava/lang/Integer;
+	public final fun component2 ()Ljava/lang/Integer;
+	public final fun component3 ()Ljava/lang/Integer;
+	public final fun copy (Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;)Lio/github/munkchunk/passportreader/model/FacePose;
+	public static synthetic fun copy$default (Lio/github/munkchunk/passportreader/model/FacePose;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;ILjava/lang/Object;)Lio/github/munkchunk/passportreader/model/FacePose;
+	public fun describeContents ()I
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getPitch ()Ljava/lang/Integer;
+	public final fun getRoll ()Ljava/lang/Integer;
+	public final fun getYaw ()Ljava/lang/Integer;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+	public fun writeToParcel (Landroid/os/Parcel;I)V
+}
+
+public final class io/github/munkchunk/passportreader/model/FacePose$Creator : android/os/Parcelable$Creator {
+	public fun <init> ()V
+	public final fun createFromParcel (Landroid/os/Parcel;)Lio/github/munkchunk/passportreader/model/FacePose;
+	public synthetic fun createFromParcel (Landroid/os/Parcel;)Ljava/lang/Object;
+	public final fun newArray (I)[Lio/github/munkchunk/passportreader/model/FacePose;
+	public synthetic fun newArray (I)[Ljava/lang/Object;
+}
+
+public final class io/github/munkchunk/passportreader/model/FeatureSupport : java/lang/Enum, android/os/Parcelable {
+	public static final field CREATOR Landroid/os/Parcelable$Creator;
+	public static final field NOT_SUPPORTED Lio/github/munkchunk/passportreader/model/FeatureSupport;
+	public static final field SUPPORTED Lio/github/munkchunk/passportreader/model/FeatureSupport;
+	public static final field UNKNOWN Lio/github/munkchunk/passportreader/model/FeatureSupport;
+	public fun describeContents ()I
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/munkchunk/passportreader/model/FeatureSupport;
+	public static fun values ()[Lio/github/munkchunk/passportreader/model/FeatureSupport;
+	public fun writeToParcel (Landroid/os/Parcel;I)V
+}
+
+public final class io/github/munkchunk/passportreader/model/FeatureSupport$Creator : android/os/Parcelable$Creator {
+	public fun <init> ()V
+	public final fun createFromParcel (Landroid/os/Parcel;)Lio/github/munkchunk/passportreader/model/FeatureSupport;
+	public synthetic fun createFromParcel (Landroid/os/Parcel;)Ljava/lang/Object;
+	public final fun newArray (I)[Lio/github/munkchunk/passportreader/model/FeatureSupport;
+	public synthetic fun newArray (I)[Ljava/lang/Object;
+}
+
+public final class io/github/munkchunk/passportreader/model/HairColour : java/lang/Enum, android/os/Parcelable {
+	public static final field BALD Lio/github/munkchunk/passportreader/model/HairColour;
+	public static final field BLACK Lio/github/munkchunk/passportreader/model/HairColour;
+	public static final field BLONDE Lio/github/munkchunk/passportreader/model/HairColour;
+	public static final field BLUE Lio/github/munkchunk/passportreader/model/HairColour;
+	public static final field BROWN Lio/github/munkchunk/passportreader/model/HairColour;
+	public static final field CREATOR Landroid/os/Parcelable$Creator;
+	public static final field GREEN Lio/github/munkchunk/passportreader/model/HairColour;
+	public static final field GREY Lio/github/munkchunk/passportreader/model/HairColour;
+	public static final field KNOWN_COLOURED Lio/github/munkchunk/passportreader/model/HairColour;
+	public static final field OTHER Lio/github/munkchunk/passportreader/model/HairColour;
+	public static final field RED Lio/github/munkchunk/passportreader/model/HairColour;
+	public static final field UNKNOWN Lio/github/munkchunk/passportreader/model/HairColour;
+	public static final field UNSPECIFIED Lio/github/munkchunk/passportreader/model/HairColour;
+	public static final field WHITE Lio/github/munkchunk/passportreader/model/HairColour;
+	public fun describeContents ()I
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/munkchunk/passportreader/model/HairColour;
+	public static fun values ()[Lio/github/munkchunk/passportreader/model/HairColour;
+	public fun writeToParcel (Landroid/os/Parcel;I)V
+}
+
+public final class io/github/munkchunk/passportreader/model/HairColour$Creator : android/os/Parcelable$Creator {
+	public fun <init> ()V
+	public final fun createFromParcel (Landroid/os/Parcel;)Lio/github/munkchunk/passportreader/model/HairColour;
+	public synthetic fun createFromParcel (Landroid/os/Parcel;)Ljava/lang/Object;
+	public final fun newArray (I)[Lio/github/munkchunk/passportreader/model/HairColour;
+	public synthetic fun newArray (I)[Ljava/lang/Object;
+}
+
+public final class io/github/munkchunk/passportreader/model/QualityScore : android/os/Parcelable {
+	public static final field CREATOR Landroid/os/Parcelable$Creator;
+	public fun <init> (Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;)V
+	public final fun component1 ()Ljava/lang/Integer;
+	public final fun component2 ()Ljava/lang/Integer;
+	public final fun component3 ()Ljava/lang/Integer;
+	public final fun copy (Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;)Lio/github/munkchunk/passportreader/model/QualityScore;
+	public static synthetic fun copy$default (Lio/github/munkchunk/passportreader/model/QualityScore;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;ILjava/lang/Object;)Lio/github/munkchunk/passportreader/model/QualityScore;
+	public fun describeContents ()I
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAlgorithmId ()Ljava/lang/Integer;
+	public final fun getAlgorithmOrganisation ()Ljava/lang/Integer;
+	public final fun getScore ()Ljava/lang/Integer;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+	public fun writeToParcel (Landroid/os/Parcel;I)V
+}
+
+public final class io/github/munkchunk/passportreader/model/QualityScore$Creator : android/os/Parcelable$Creator {
+	public fun <init> ()V
+	public final fun createFromParcel (Landroid/os/Parcel;)Lio/github/munkchunk/passportreader/model/QualityScore;
+	public synthetic fun createFromParcel (Landroid/os/Parcel;)Ljava/lang/Object;
+	public final fun newArray (I)[Lio/github/munkchunk/passportreader/model/QualityScore;
+	public synthetic fun newArray (I)[Ljava/lang/Object;
+}
+
+public final class io/github/munkchunk/passportreader/model/Sex : java/lang/Enum, android/os/Parcelable {
+	public static final field CREATOR Landroid/os/Parcelable$Creator;
+	public static final field Companion Lio/github/munkchunk/passportreader/model/Sex$Companion;
+	public static final field FEMALE Lio/github/munkchunk/passportreader/model/Sex;
+	public static final field MALE Lio/github/munkchunk/passportreader/model/Sex;
+	public static final field UNKNOWN Lio/github/munkchunk/passportreader/model/Sex;
+	public static final field UNSPECIFIED Lio/github/munkchunk/passportreader/model/Sex;
+	public fun describeContents ()I
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/munkchunk/passportreader/model/Sex;
+	public static fun values ()[Lio/github/munkchunk/passportreader/model/Sex;
+	public fun writeToParcel (Landroid/os/Parcel;I)V
+}
+
+public final class io/github/munkchunk/passportreader/model/Sex$Companion {
+	public final fun fromMrzCharacter (Ljava/lang/Character;)Lio/github/munkchunk/passportreader/model/Sex;
+}
+
+public final class io/github/munkchunk/passportreader/model/Sex$Creator : android/os/Parcelable$Creator {
+	public fun <init> ()V
+	public final fun createFromParcel (Landroid/os/Parcel;)Lio/github/munkchunk/passportreader/model/Sex;
+	public synthetic fun createFromParcel (Landroid/os/Parcel;)Ljava/lang/Object;
+	public final fun newArray (I)[Lio/github/munkchunk/passportreader/model/Sex;
+	public synthetic fun newArray (I)[Ljava/lang/Object;
+}
+
+public final class io/github/munkchunk/passportreader/model/VerificationReport : android/os/Parcelable {
+	public static final field CREATOR Landroid/os/Parcelable$Creator;
+	public fun <init> ()V
+	public fun <init> (Lio/github/munkchunk/passportreader/model/CheckResult;Lio/github/munkchunk/passportreader/model/CheckResult;Lio/github/munkchunk/passportreader/model/CheckResult;Lio/github/munkchunk/passportreader/model/CheckResult;Lio/github/munkchunk/passportreader/model/CheckResult;Lio/github/munkchunk/passportreader/model/CheckResult;Lio/github/munkchunk/passportreader/model/CheckResult;Lio/github/munkchunk/passportreader/model/CheckResult;Ljava/util/List;Ljava/util/List;)V
+	public synthetic fun <init> (Lio/github/munkchunk/passportreader/model/CheckResult;Lio/github/munkchunk/passportreader/model/CheckResult;Lio/github/munkchunk/passportreader/model/CheckResult;Lio/github/munkchunk/passportreader/model/CheckResult;Lio/github/munkchunk/passportreader/model/CheckResult;Lio/github/munkchunk/passportreader/model/CheckResult;Lio/github/munkchunk/passportreader/model/CheckResult;Lio/github/munkchunk/passportreader/model/CheckResult;Ljava/util/List;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lio/github/munkchunk/passportreader/model/CheckResult;
+	public final fun component10 ()Ljava/util/List;
+	public final fun component2 ()Lio/github/munkchunk/passportreader/model/CheckResult;
+	public final fun component3 ()Lio/github/munkchunk/passportreader/model/CheckResult;
+	public final fun component4 ()Lio/github/munkchunk/passportreader/model/CheckResult;
+	public final fun component5 ()Lio/github/munkchunk/passportreader/model/CheckResult;
+	public final fun component6 ()Lio/github/munkchunk/passportreader/model/CheckResult;
+	public final fun component7 ()Lio/github/munkchunk/passportreader/model/CheckResult;
+	public final fun component8 ()Lio/github/munkchunk/passportreader/model/CheckResult;
+	public final fun component9 ()Ljava/util/List;
+	public final fun copy (Lio/github/munkchunk/passportreader/model/CheckResult;Lio/github/munkchunk/passportreader/model/CheckResult;Lio/github/munkchunk/passportreader/model/CheckResult;Lio/github/munkchunk/passportreader/model/CheckResult;Lio/github/munkchunk/passportreader/model/CheckResult;Lio/github/munkchunk/passportreader/model/CheckResult;Lio/github/munkchunk/passportreader/model/CheckResult;Lio/github/munkchunk/passportreader/model/CheckResult;Ljava/util/List;Ljava/util/List;)Lio/github/munkchunk/passportreader/model/VerificationReport;
+	public static synthetic fun copy$default (Lio/github/munkchunk/passportreader/model/VerificationReport;Lio/github/munkchunk/passportreader/model/CheckResult;Lio/github/munkchunk/passportreader/model/CheckResult;Lio/github/munkchunk/passportreader/model/CheckResult;Lio/github/munkchunk/passportreader/model/CheckResult;Lio/github/munkchunk/passportreader/model/CheckResult;Lio/github/munkchunk/passportreader/model/CheckResult;Lio/github/munkchunk/passportreader/model/CheckResult;Lio/github/munkchunk/passportreader/model/CheckResult;Ljava/util/List;Ljava/util/List;ILjava/lang/Object;)Lio/github/munkchunk/passportreader/model/VerificationReport;
+	public fun describeContents ()I
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getActiveAuthentication ()Lio/github/munkchunk/passportreader/model/CheckResult;
+	public final fun getBasicAccessControl ()Lio/github/munkchunk/passportreader/model/CheckResult;
+	public final fun getCertificateChain ()Lio/github/munkchunk/passportreader/model/CheckResult;
+	public final fun getChainCertificates ()Ljava/util/List;
+	public final fun getChipAuthentication ()Lio/github/munkchunk/passportreader/model/CheckResult;
+	public final fun getDataGroupHashes ()Lio/github/munkchunk/passportreader/model/CheckResult;
+	public final fun getDocumentSignature ()Lio/github/munkchunk/passportreader/model/CheckResult;
+	public final fun getHashes ()Ljava/util/List;
+	public final fun getPace ()Lio/github/munkchunk/passportreader/model/CheckResult;
+	public final fun getTerminalAuthentication ()Lio/github/munkchunk/passportreader/model/CheckResult;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+	public fun writeToParcel (Landroid/os/Parcel;I)V
+}
+
+public final class io/github/munkchunk/passportreader/model/VerificationReport$Creator : android/os/Parcelable$Creator {
+	public fun <init> ()V
+	public final fun createFromParcel (Landroid/os/Parcel;)Lio/github/munkchunk/passportreader/model/VerificationReport;
+	public synthetic fun createFromParcel (Landroid/os/Parcel;)Ljava/lang/Object;
+	public final fun newArray (I)[Lio/github/munkchunk/passportreader/model/VerificationReport;
+	public synthetic fun newArray (I)[Ljava/lang/Object;
+}
+
+public abstract interface class io/github/munkchunk/passportreader/model/error/NfcErrorReporter {
+	public abstract fun report (Ljava/lang/String;Lio/github/munkchunk/passportreader/model/error/PassportReadException;)V
+}
+
+public abstract class io/github/munkchunk/passportreader/model/error/PassportReadException : java/lang/Exception {
+	public static final field Companion Lio/github/munkchunk/passportreader/model/error/PassportReadException$Companion;
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getMessageArgs ()Ljava/util/List;
+	public abstract fun getMessageRes ()I
+	public fun getTechnicalDetails ()Ljava/lang/String;
+	public abstract fun getTitleRes ()I
+}
+
+public final class io/github/munkchunk/passportreader/model/error/PassportReadException$AuthenticationFailed : io/github/munkchunk/passportreader/model/error/PassportReadException {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getMessageRes ()I
+	public fun getTitleRes ()I
+}
+
+public final class io/github/munkchunk/passportreader/model/error/PassportReadException$Companion {
+}
+
+public final class io/github/munkchunk/passportreader/model/error/PassportReadException$NfcIo : io/github/munkchunk/passportreader/model/error/PassportReadException {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/Integer;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/Integer;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getMessageArgs ()Ljava/util/List;
+	public fun getMessageRes ()I
+	public final fun getSwCode ()Ljava/lang/Integer;
+	public fun getTitleRes ()I
+}
+
+public final class io/github/munkchunk/passportreader/model/error/PassportReadException$NoTagDetected : io/github/munkchunk/passportreader/model/error/PassportReadException {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getMessageRes ()I
+	public fun getTitleRes ()I
+}
+
+public final class io/github/munkchunk/passportreader/model/error/PassportReadException$PaceFailed : io/github/munkchunk/passportreader/model/error/PassportReadException {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/Integer;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/Integer;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getMessageArgs ()Ljava/util/List;
+	public fun getMessageRes ()I
+	public final fun getStep ()Ljava/lang/Integer;
+	public fun getTechnicalDetails ()Ljava/lang/String;
+	public fun getTitleRes ()I
+}
+
+public final class io/github/munkchunk/passportreader/model/error/PassportReadException$TagLost : io/github/munkchunk/passportreader/model/error/PassportReadException {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getMessageRes ()I
+	public fun getTitleRes ()I
+}
+
+public final class io/github/munkchunk/passportreader/model/error/PassportReadException$TrustOrPassiveAuthFailed : io/github/munkchunk/passportreader/model/error/PassportReadException {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getMessageRes ()I
+	public fun getTitleRes ()I
+}
+
+public final class io/github/munkchunk/passportreader/model/error/PassportReadException$Unknown : io/github/munkchunk/passportreader/model/error/PassportReadException {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getMessageArgs ()Ljava/util/List;
+	public fun getMessageRes ()I
+	public fun getTitleRes ()I
+}
+
+public final class io/github/munkchunk/passportreader/model/error/PassportReadException$WrongMrz : io/github/munkchunk/passportreader/model/error/PassportReadException {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getMessageRes ()I
+	public fun getTitleRes ()I
+}
+
+public final class io/github/munkchunk/passportreader/reader/NfcPassportReaderManager {
+	public fun <init> (Landroid/content/Context;Lio/github/munkchunk/passportreader/timing/NfcReadTimingConfig;Lio/github/munkchunk/passportreader/model/error/NfcErrorReporter;)V
+	public synthetic fun <init> (Landroid/content/Context;Lio/github/munkchunk/passportreader/timing/NfcReadTimingConfig;Lio/github/munkchunk/passportreader/model/error/NfcErrorReporter;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun attachActivity (Landroid/app/Activity;)V
+	public final fun clearPendingTagEvents ()V
+	public final fun detachActivity ()V
+	public final fun getCurrentState ()Lio/github/munkchunk/passportreader/reader/NfcReadState;
+	public final fun getNfcAdapter ()Landroid/nfc/NfcAdapter;
+	public final fun getReadState ()Lkotlinx/coroutines/flow/StateFlow;
+	public final fun isNfcAvailable ()Z
+	public final fun isNfcEnabled ()Z
+	public final fun isScanningNow ()Z
+	public final fun onNfcTagDetected (Landroid/nfc/Tag;)V
+	public final fun readPassport (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun resetTiming ()V
+	public final fun retryAfterError (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stopReading (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public abstract class io/github/munkchunk/passportreader/reader/NfcReadState {
+}
+
+public final class io/github/munkchunk/passportreader/reader/NfcReadState$Error : io/github/munkchunk/passportreader/reader/NfcReadState {
+	public fun <init> (IILjava/util/List;Ljava/lang/String;Z)V
+	public synthetic fun <init> (IILjava/util/List;Ljava/lang/String;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()I
+	public final fun component2 ()I
+	public final fun component3 ()Ljava/util/List;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Z
+	public final fun copy (IILjava/util/List;Ljava/lang/String;Z)Lio/github/munkchunk/passportreader/reader/NfcReadState$Error;
+	public static synthetic fun copy$default (Lio/github/munkchunk/passportreader/reader/NfcReadState$Error;IILjava/util/List;Ljava/lang/String;ZILjava/lang/Object;)Lio/github/munkchunk/passportreader/reader/NfcReadState$Error;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCanRetry ()Z
+	public final fun getMessageArgs ()Ljava/util/List;
+	public final fun getMessageRes ()I
+	public final fun getTechnicalDetails ()Ljava/lang/String;
+	public final fun getTitleRes ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/munkchunk/passportreader/reader/NfcReadState$Idle : io/github/munkchunk/passportreader/reader/NfcReadState {
+	public static final field INSTANCE Lio/github/munkchunk/passportreader/reader/NfcReadState$Idle;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/munkchunk/passportreader/reader/NfcReadState$Initializing : io/github/munkchunk/passportreader/reader/NfcReadState {
+	public static final field INSTANCE Lio/github/munkchunk/passportreader/reader/NfcReadState$Initializing;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/munkchunk/passportreader/reader/NfcReadState$Reading : io/github/munkchunk/passportreader/reader/NfcReadState {
+	public fun <init> ()V
+	public fun <init> (Lio/github/munkchunk/passportreader/reader/ReadStage;)V
+	public synthetic fun <init> (Lio/github/munkchunk/passportreader/reader/ReadStage;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lio/github/munkchunk/passportreader/reader/ReadStage;
+	public final fun copy (Lio/github/munkchunk/passportreader/reader/ReadStage;)Lio/github/munkchunk/passportreader/reader/NfcReadState$Reading;
+	public static synthetic fun copy$default (Lio/github/munkchunk/passportreader/reader/NfcReadState$Reading;Lio/github/munkchunk/passportreader/reader/ReadStage;ILjava/lang/Object;)Lio/github/munkchunk/passportreader/reader/NfcReadState$Reading;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getStage ()Lio/github/munkchunk/passportreader/reader/ReadStage;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/munkchunk/passportreader/reader/NfcReadState$Success : io/github/munkchunk/passportreader/reader/NfcReadState {
+	public static final field INSTANCE Lio/github/munkchunk/passportreader/reader/NfcReadState$Success;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/munkchunk/passportreader/reader/NfcReadState$WaitingForTag : io/github/munkchunk/passportreader/reader/NfcReadState {
+	public static final field INSTANCE Lio/github/munkchunk/passportreader/reader/NfcReadState$WaitingForTag;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/munkchunk/passportreader/reader/NfcReadStateKt {
+	public static final fun isActivelyReading (Lio/github/munkchunk/passportreader/reader/NfcReadState;)Z
+	public static final fun shouldEnableReaderMode (Lio/github/munkchunk/passportreader/reader/NfcReadState;)Z
+}
+
+public final class io/github/munkchunk/passportreader/reader/ReadStage : java/lang/Enum {
+	public static final field Authenticating Lio/github/munkchunk/passportreader/reader/ReadStage;
+	public static final field Connecting Lio/github/munkchunk/passportreader/reader/ReadStage;
+	public static final field ReadingData Lio/github/munkchunk/passportreader/reader/ReadStage;
+	public static final field ReadingPhoto Lio/github/munkchunk/passportreader/reader/ReadStage;
+	public static final field Verifying Lio/github/munkchunk/passportreader/reader/ReadStage;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/munkchunk/passportreader/reader/ReadStage;
+	public static fun values ()[Lio/github/munkchunk/passportreader/reader/ReadStage;
+}
+
+public final class io/github/munkchunk/passportreader/timing/NfcReadTimingConfig {
+	public fun <init> ()V
+	public fun <init> (JJJJJIJLjava/util/List;IJJIJ)V
+	public synthetic fun <init> (JJJJJIJLjava/util/List;IJJIJILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()J
+	public final fun component10 ()J
+	public final fun component11 ()J
+	public final fun component12 ()I
+	public final fun component13 ()J
+	public final fun component2 ()J
+	public final fun component3 ()J
+	public final fun component4 ()J
+	public final fun component5 ()J
+	public final fun component6 ()I
+	public final fun component7 ()J
+	public final fun component8 ()Ljava/util/List;
+	public final fun component9 ()I
+	public final fun copy (JJJJJIJLjava/util/List;IJJIJ)Lio/github/munkchunk/passportreader/timing/NfcReadTimingConfig;
+	public static synthetic fun copy$default (Lio/github/munkchunk/passportreader/timing/NfcReadTimingConfig;JJJJJIJLjava/util/List;IJJIJILjava/lang/Object;)Lio/github/munkchunk/passportreader/timing/NfcReadTimingConfig;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAwaitTagTimeoutMs ()J
+	public final fun getCardStabilizationMs ()J
+	public final fun getIsoDepTimeoutMs ()I
+	public final fun getPaceInterProtocolDelayMs ()J
+	public final fun getPaceMaxRetries ()I
+	public final fun getPaceRetryBaseDelayMs ()J
+	public final fun getPresenceCheckDelayMs ()I
+	public final fun getReaderModeReassertDelaysMs ()Ljava/util/List;
+	public final fun getRetryReaderModeResetDelayMs ()J
+	public final fun getSettleAfterEnableFloorMs ()J
+	public final fun getSettleBaseMs ()J
+	public final fun getSettleMaxMs ()J
+	public final fun getSettleMinMs ()J
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/munkchunk/passportreader/timing/NfcTimingPresets {
+	public static final field INSTANCE Lio/github/munkchunk/passportreader/timing/NfcTimingPresets;
+	public final fun getCONSERVATIVE ()Lio/github/munkchunk/passportreader/timing/NfcReadTimingConfig;
+	public final fun getDEFAULT ()Lio/github/munkchunk/passportreader/timing/NfcReadTimingConfig;
+	public final fun getFAST ()Lio/github/munkchunk/passportreader/timing/NfcReadTimingConfig;
+}
+
+public final class io/github/munkchunk/passportreader/trust/CscaTrustStore {
+	public fun <init> ()V
+	public final fun addAnchors (Ljava/util/Collection;)V
+	public final fun addCertStore (Ljava/security/cert/CertStore;)V
+	public final fun addCertStoreWithSelfSignedAnchors (Ljava/security/cert/CertStore;)V
+	public final fun addCvcaKeyStore (Ljava/security/KeyStore;)V
+	public final fun clear ()V
+	public final fun getAnchors ()Ljava/util/Set;
+	public final fun getCertStores ()Ljava/util/List;
+	public final fun getCvcaKeyStores ()Ljava/util/List;
+}
+

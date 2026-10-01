@@ -1,0 +1,23 @@
+name: Question
+description: Ask how the library or the sample app works, or whether it fits what you are building.
+labels: [question]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        [docs/architecture.md](https://github.com/munkchunk/android-nfc-passport-reader/blob/main/docs/architecture.md) and [docs/data-groups.md](https://github.com/munkchunk/android-nfc-passport-reader/blob/main/docs/data-groups.md) may already answer it.
+
+        **Never include personal data** from a real passport: no names, document numbers, MRZ lines, dates of birth or expiry, or photos.
+  - type: textarea
+    id: question
+    attributes:
+      label: Your question
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: What you are building or trying to do, if it helps.
+    validations:
+      required: false

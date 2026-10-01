@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- The header's colour behind the status bar, so the system bar reads as
+         part of the app bar rather than a stray band: white with dark icons
+         here, brand green with light icons in the night theme. -->
+    <style name="Theme.PassportReaderSample" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:statusBarColor">@color/header</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:navigationBarColor">@color/ground</item>
+        <item name="android:windowLightNavigationBar">true</item>
+    </style>
+</resources>

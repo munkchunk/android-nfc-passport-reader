@@ -1,0 +1,99 @@
+[versions]
+androidGradlePlugin = "8.7.1"
+kotlin = "1.9.23"
+binaryCompatibilityValidator = "0.16.3"
+detekt = "1.23.7"
+
+# AndroidX / UI
+coreKtx = "1.16.0"
+appcompat = "1.7.1"
+material = "1.13.0"
+lifecycleRuntimeKtx = "2.7.0"
+activityCompose = "1.9.0"
+composeBom = "2024.05.00"
+composeCompiler = "1.5.13"
+composeMaterial3 = "1.2.1"
+
+# Camera and OCR (sample app only)
+camerax = "1.4.2"
+textRecognition = "16.0.1"
+accompanistPermissions = "0.34.0"
+
+# Logging
+timber = "5.0.1"
+
+# Testing
+junit = "4.13.2"
+junitVersion = "1.3.0"
+espressoCore = "3.7.0"
+robolectric = "4.14.1"
+
+# Passport reading stack
+bouncycastle = "1.86"
+jmrtd = "0.8.8"
+scuba = "0.0.26"
+certCvc = "1.4.13"
+commonsCodec = "1.19.0"
+multidex = "2.0.1"
+jnbis = "2.0.2"
+# 1.1.0 requires compileSdk 37; revisit when the AGP/compileSdk bump lands.
+jp2Android = "1.0.5"
+androidannotationsApi = "4.8.0"
+coroutinesAndroid = "1.8.1"
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+binary-compatibility-validator = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "binaryCompatibilityValidator" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+
+[libraries]
+# AndroidX
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+androidx-multidex = { module = "androidx.multidex:multidex", version.ref = "multidex" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+
+# Compose (sample app only)
+activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+compose-ui = { group = "androidx.compose.ui", name = "ui" }
+compose-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+compose-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "composeMaterial3" }
+
+# Camera and OCR (sample app only)
+androidx-camera-core = { module = "androidx.camera:camera-core", version.ref = "camerax" }
+androidx-camera-camera2 = { module = "androidx.camera:camera-camera2", version.ref = "camerax" }
+androidx-camera-lifecycle = { module = "androidx.camera:camera-lifecycle", version.ref = "camerax" }
+androidx-camera-view = { module = "androidx.camera:camera-view", version.ref = "camerax" }
+mlkit-text-recognition = { module = "com.google.mlkit:text-recognition", version.ref = "textRecognition" }
+accompanist-permissions = { module = "com.google.accompanist:accompanist-permissions", version.ref = "accompanistPermissions" }
+
+# Coroutines
+kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutinesAndroid" }
+
+# Logging
+timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "timber" }
+
+# Passport reading stack
+bouncycastle-bcprov = { module = "org.bouncycastle:bcprov-jdk18on", version.ref = "bouncycastle" }
+bouncycastle-bcpkix = { module = "org.bouncycastle:bcpkix-jdk18on", version.ref = "bouncycastle" }
+bouncycastle-bcutil = { module = "org.bouncycastle:bcutil-jdk18on", version.ref = "bouncycastle" }
+jmrtd = { module = "org.jmrtd:jmrtd", version.ref = "jmrtd" }
+scuba-sc-android = { module = "net.sf.scuba:scuba-sc-android", version.ref = "scuba" }
+cert-cvc = { module = "org.ejbca.cvc:cert-cvc", version.ref = "certCvc" }
+commons-codec = { module = "commons-codec:commons-codec", version.ref = "commonsCodec" }
+jnbis = { module = "com.github.mhshams:jnbis", version.ref = "jnbis" }
+jp2-android = { module = "io.github.michaldvorak-gemalto:jp2-android", version.ref = "jp2Android" }
+androidannotations-api = { module = "org.androidannotations:androidannotations-api", version.ref = "androidannotationsApi" }
+
+# Testing
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+robolectric = { group = "org.robolectric", name = "robolectric", version.ref = "robolectric" }

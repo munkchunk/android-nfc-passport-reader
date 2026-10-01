@@ -1,0 +1,25 @@
+*.iml
+.gradle/
+.kotlin/
+local.properties
+.idea/
+.DS_Store
+build/
+captures/
+.externalNativeBuild
+.cxx
+*.apk
+*.aab
+
+# Signing material must never be committed
+*.jks
+*.keystore
+*.p12
+signature.properties
+secure_properties/
+
+# Firebase config must never be committed
+google-services.json
+
+# Local working notes, kept out of the repository
+CLAUDE.md

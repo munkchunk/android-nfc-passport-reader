@@ -1,0 +1,13 @@
+# Overrides on top of detekt's default configuration (buildUponDefaultConfig).
+# Keep this short: every entry is a rule the project has decided does not
+# apply, and should say why.
+
+naming:
+  FunctionNaming:
+    # Compose requires @Composable functions to be named like types.
+    ignoreAnnotated: ['Composable']
+
+style:
+  MagicNumber:
+    # Layout code is dimensions and weights; naming every dp is noise.
+    ignoreAnnotated: ['Composable']
