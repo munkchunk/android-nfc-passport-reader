@@ -2,7 +2,9 @@
 <resources>
     <!-- The header's colour behind the status bar, so the system bar reads as
          part of the app bar rather than a stray band: white with dark icons
-         here, brand green with light icons in the night theme. -->
+         here, brand green with light icons in the night theme. Below API 35
+         only: from 35 the window is edge-to-edge, these colours are ignored,
+         and the app draws behind the bars itself. -->
     <style name="Theme.PassportReaderSample" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:statusBarColor">@color/header</item>
         <item name="android:windowLightStatusBar">true</item>

@@ -12,8 +12,12 @@ import androidx.annotation.StringRes
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
@@ -67,10 +71,24 @@ class MainActivity : ComponentActivity() {
                     }
 
                     Scaffold(
-                        containerColor = MaterialTheme.colorScheme.background,
+                        // Edge-to-edge, the system bars show whatever is drawn
+                        // behind them. The scanner is framed in black, so the
+                        // bars and any cutout band around the camera are black
+                        // too (see SystemBarsFor).
+                        containerColor = if (screen == Screen.Scan) {
+                            Color.Black
+                        } else {
+                            MaterialTheme.colorScheme.background
+                        },
+                        // From API 35 the window is edge-to-edge, so the content
+                        // keeps clear of the system bars, a display cutout and
+                        // the keyboard itself. adjustResize stops the window
+                        // panning instead, which would slide the header under
+                        // the status bar. Below API 35 these insets are all zero.
+                        contentWindowInsets = WindowInsets.safeDrawing,
                         topBar = {
-                            // The camera runs full bleed; a bar over it would only
-                            // steal room from the viewfinder.
+                            // The scanner has no header: a bar over the camera would
+                            // only steal room from the viewfinder.
                             if (screen != Screen.Scan) {
                                 Column {
                                     // Medium weight: on a white header the title
@@ -86,7 +104,9 @@ class MainActivity : ComponentActivity() {
                                         colors = TopAppBarDefaults.topAppBarColors(
                                             containerColor = MaterialTheme.brand.header,
                                             titleContentColor = MaterialTheme.brand.onHeader
-                                        )
+                                        ),
+                                        windowInsets = WindowInsets.safeDrawing
+                                            .only(WindowInsetsSides.Top + WindowInsetsSides.Horizontal)
                                     )
                                     MaterialTheme.brand.headerRule?.let { HorizontalDivider(color = it) }
                                 }
@@ -172,9 +192,11 @@ class MainActivity : ComponentActivity() {
 
 /**
  * The status bar takes the header's colour so it reads as part of it. The
- * scanner has no header and runs the camera full bleed, where a white or green
- * band looked like a mistake, so there it is black. The theme XML sets the same
- * colours for the first frame, before this runs.
+ * scanner has no header and frames the camera in black, where a white or green
+ * band would look like a mistake. The theme XML sets the same colours for the
+ * first frame, before this runs. From API 35 the window is edge-to-edge and the
+ * bar colour is ignored: the header draws behind the status bar itself, and
+ * the scanner's black frame does while scanning.
  */
 @Composable
 private fun ComponentActivity.SystemBarsFor(screen: Screen) {
@@ -182,7 +204,7 @@ private fun ComponentActivity.SystemBarsFor(screen: Screen) {
     val bar = if (scanning) Color.Black else MaterialTheme.brand.header
     val lightIcons = scanning || isSystemInDarkTheme()
     SideEffect {
-        @Suppress("DEPRECATION") // Ignored under enforced edge-to-edge (API 35+); fine below.
+        @Suppress("DEPRECATION") // Ignored under enforced edge-to-edge (API 35+); see above.
         window.statusBarColor = bar.toArgb()
         WindowCompat.getInsetsController(window, window.decorView).isAppearanceLightStatusBars = !lightIcons
     }

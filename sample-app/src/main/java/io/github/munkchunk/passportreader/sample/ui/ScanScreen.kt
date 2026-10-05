@@ -335,9 +335,11 @@ private fun MrzGuideBand() {
 
 @Composable
 private fun PermissionPrompt(onRequest: () -> Unit, onCancel: () -> Unit) {
+    // Its own page colour: the scanner around it is framed in black.
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background)
             .padding(24.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp, Alignment.CenterVertically),
         horizontalAlignment = Alignment.CenterHorizontally
