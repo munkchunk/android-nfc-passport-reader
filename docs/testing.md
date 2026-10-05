@@ -21,7 +21,8 @@ Unit tests cover what can be tested away from a chip:
   exception chains; when PACE retries; chip-authentication key choice;
   terminal credentials; CSCA loading.
 - **Sample app:** MRZ parsing, dates, check digits, how DG11–DG16 are
-  displayed, and palette contrast (`ContrastTest`; see
+  displayed, the camera-permission states, and palette contrast
+  (`ContrastTest`; see
   [sample-app.md](sample-app.md#contrast-and-how-it-is-enforced)).
 
 The parcelling tests run under Robolectric at API 29 and 33, which downloads

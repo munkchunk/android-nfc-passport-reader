@@ -1,14 +1,21 @@
 package io.github.munkchunk.passportreader.sample.ui
 
 import android.Manifest
+import android.app.Activity
+import android.content.Context
+import android.content.ContextWrapper
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.media.AudioAttributes
 import android.media.MediaActionSound
 import android.media.SoundPool
+import android.net.Uri
+import android.provider.Settings
 import android.util.Size
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.StringRes
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.Preview
@@ -37,6 +44,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -50,7 +58,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
 import io.github.munkchunk.passportreader.sample.R
 import io.github.munkchunk.passportreader.sample.mrz.MrzImageAnalyzer
 import io.github.munkchunk.passportreader.sample.mrz.MrzKey
@@ -84,30 +95,78 @@ fun ScanScreen(
     onCancel: () -> Unit
 ) {
     val context = LocalContext.current
-    var hasPermission by remember {
-        mutableStateOf(
-            ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA) ==
-                PackageManager.PERMISSION_GRANTED
-        )
+    fun granted() = ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA) ==
+        PackageManager.PERMISSION_GRANTED
+
+    // Saved, so a rotation while the system dialog is up neither forgets the
+    // answer nor asks a second time over the first dialog.
+    var permission by rememberSaveable {
+        mutableStateOf(if (granted()) CameraPermission.Granted else CameraPermission.Asking)
     }
+    var requested by rememberSaveable { mutableStateOf(false) }
 
     val permissionLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.RequestPermission()
-    ) { granted -> hasPermission = granted }
+    ) { granted ->
+        val activity = context.findActivity()
+        permission = CameraPermission.afterRequest(
+            granted = granted,
+            canAskAgain = activity != null &&
+                ActivityCompat.shouldShowRequestPermissionRationale(activity, Manifest.permission.CAMERA)
+        )
+    }
 
     LaunchedEffect(Unit) {
-        if (!hasPermission) permissionLauncher.launch(Manifest.permission.CAMERA)
+        if (permission == CameraPermission.Asking && !requested) {
+            requested = true
+            permissionLauncher.launch(Manifest.permission.CAMERA)
+        }
     }
 
-    if (!hasPermission) {
-        PermissionPrompt(
-            onRequest = { permissionLauncher.launch(Manifest.permission.CAMERA) },
+    // Coming back from Settings: the permission may have been switched on there.
+    val lifecycleOwner = LocalLifecycleOwner.current
+    DisposableEffect(lifecycleOwner) {
+        val observer = LifecycleEventObserver { _, event ->
+            if (event == Lifecycle.Event.ON_RESUME && permission != CameraPermission.Granted && granted()) {
+                permission = CameraPermission.Granted
+            }
+        }
+        lifecycleOwner.lifecycle.addObserver(observer)
+        onDispose { lifecycleOwner.lifecycle.removeObserver(observer) }
+    }
+
+    when (permission) {
+        CameraPermission.Granted -> CameraScanner(onMrzFound = onMrzFound, onCancel = onCancel)
+        // The system dialog is on top; anything behind it would compete.
+        CameraPermission.Asking -> Unit
+        CameraPermission.Denied -> PermissionPrompt(
+            body = R.string.permission_camera_body,
+            action = R.string.permission_camera_allow,
+            onAction = { permissionLauncher.launch(Manifest.permission.CAMERA) },
             onCancel = onCancel
         )
-        return
+        CameraPermission.Blocked -> PermissionPrompt(
+            body = R.string.permission_camera_blocked_body,
+            action = R.string.permission_camera_open_settings,
+            onAction = { context.openAppSettings() },
+            onCancel = onCancel
+        )
     }
+}
 
-    CameraScanner(onMrzFound = onMrzFound, onCancel = onCancel)
+private fun Context.findActivity(): Activity? {
+    var context = this
+    while (context is ContextWrapper) {
+        if (context is Activity) return context
+        context = context.baseContext
+    }
+    return null
+}
+
+private fun Context.openAppSettings() {
+    startActivity(
+        Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.fromParts("package", packageName, null))
+    )
 }
 
 @Composable
@@ -334,7 +393,12 @@ private fun MrzGuideBand() {
 }
 
 @Composable
-private fun PermissionPrompt(onRequest: () -> Unit, onCancel: () -> Unit) {
+private fun PermissionPrompt(
+    @StringRes body: Int,
+    @StringRes action: Int,
+    onAction: () -> Unit,
+    onCancel: () -> Unit
+) {
     // Its own page colour: the scanner around it is framed in black.
     Column(
         modifier = Modifier
@@ -346,11 +410,11 @@ private fun PermissionPrompt(onRequest: () -> Unit, onCancel: () -> Unit) {
     ) {
         Text(stringResource(R.string.permission_camera_title), style = MaterialTheme.typography.headlineSmall)
         Text(
-            stringResource(R.string.permission_camera_body),
+            stringResource(body),
             textAlign = TextAlign.Center,
             style = MaterialTheme.typography.bodyMedium
         )
-        Button(onClick = onRequest) { Text(stringResource(R.string.permission_camera_allow)) }
+        Button(onClick = onAction) { Text(stringResource(action)) }
         TextButton(colors = brandTextButtonColors(), onClick = onCancel) {
             Text(stringResource(R.string.scan_enter_by_hand))
         }

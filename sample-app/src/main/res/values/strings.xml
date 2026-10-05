@@ -63,6 +63,8 @@
     <string name="permission_camera_title">Camera access needed</string>
     <string name="permission_camera_body">The camera reads the MRZ - row of letters and numbers along the bottom of the photo page. Nothing is recorded or sent anywhere.</string>
     <string name="permission_camera_allow">Allow camera</string>
+    <string name="permission_camera_blocked_body">Camera access is turned off for this app. To scan, allow the camera in Settings under Permissions, then come back.</string>
+    <string name="permission_camera_open_settings">Open settings</string>
 
     <!-- ============================ Read ============================= -->
 
