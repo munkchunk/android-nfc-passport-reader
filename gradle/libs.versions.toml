@@ -1,5 +1,5 @@
 [versions]
-androidGradlePlugin = "8.7.1"
+androidGradlePlugin = "8.13.2"
 kotlin = "1.9.23"
 binaryCompatibilityValidator = "0.16.3"
 detekt = "1.23.7"
@@ -36,7 +36,7 @@ certCvc = "1.4.13"
 commonsCodec = "1.19.0"
 multidex = "2.0.1"
 jnbis = "2.0.2"
-# 1.1.0 requires compileSdk 37; revisit when the AGP/compileSdk bump lands.
+# 1.1.0 requires compileSdk 37; revisit when compileSdk reaches 37.
 jp2Android = "1.0.5"
 androidannotationsApi = "4.8.0"
 coroutinesAndroid = "1.8.1"

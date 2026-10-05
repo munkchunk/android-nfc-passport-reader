@@ -60,8 +60,7 @@ Both are **BSD 2-Clause**; the POM declares it and the project lives at
 in 2019).
 
 Pinned to **1.0.5** rather than the current 1.1.0, which requires
-`compileSdk 37`; this project builds against 35 with AGP 8.7.1. Revisit when
-that moves.
+`compileSdk 37`, above this project's. Revisit when that moves.
 
 **Why not JJ2000.** The usual pure-Java alternative is JJ2000, the reference
 implementation written in 1999-2000 by EPFL, Ericsson and Canon

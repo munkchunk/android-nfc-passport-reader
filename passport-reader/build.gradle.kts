@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "io.github.munkchunk.passportreader"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         minSdk = 29

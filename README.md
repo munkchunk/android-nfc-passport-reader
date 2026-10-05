@@ -142,7 +142,7 @@ NfcPassportReaderManager(context, errorReporter = object : NfcErrorReporter {
 
 ## Building
 
-Needs JDK 17 and the Android SDK (API 35). Point Gradle at your SDK:
+Needs JDK 17 and the Android SDK (API 36). Point Gradle at your SDK:
 
 ```
 echo "sdk.dir=/path/to/android-sdk" > local.properties
