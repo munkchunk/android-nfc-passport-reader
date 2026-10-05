@@ -1,8 +1,9 @@
 name: Checks
 
 # tools/checks.sh is everything that can be decided without a passport and a
-# phone: both modules built, unit tests, lint, detekt, the API check and the
-# licensing checks. It cannot test the chip read path; see CONTRIBUTING.md.
+# phone: both modules built, the app's network permissions, unit tests, lint,
+# detekt, the API check and the licensing checks. It cannot test the chip
+# read path; see CONTRIBUTING.md.
 
 on:
   push:
@@ -37,7 +38,6 @@ jobs:
           cache-provider: basic
 
       # The runner image carries the Android SDK and sets ANDROID_HOME, so no
-      # local.properties is needed. The private-names check skips here: its
-      # patterns are deliberately kept out of the repository.
+      # local.properties is needed.
       - name: Run checks
         run: tools/checks.sh

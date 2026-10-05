@@ -97,9 +97,26 @@ head_ "Build"
 # --fast is not good enough to gate a commit.
 if (( FAST )); then
     skip "assemble" "--fast given; the sample app is the public-API canary"
+    skip "network permissions" "--fast given; needs the merged manifest"
 else
     run ":passport-reader:assembleDebug" gradle :passport-reader:assembleDebug
     run ":sample-app:assembleDebug"      gradle :sample-app:assembleDebug
+
+    # The app needs no network, but dependencies can request it: ML Kit's
+    # telemetry library adds INTERNET and ACCESS_NETWORK_STATE, which the
+    # app's manifest removes. Check the merged result, so a new dependency
+    # cannot quietly bring them back.
+    MERGED="sample-app/build/intermediates/merged_manifest/debug/processDebugMainManifest/AndroidManifest.xml"
+    NETWORK='android\.permission\.(INTERNET|ACCESS_NETWORK_STATE|ACCESS_WIFI_STATE)"'
+    if [[ ! -f "$MERGED" ]]; then
+        fail "sample app requests no network access"
+        printf '        merged manifest not found at %s\n' "$MERGED"
+    elif grep -qE "$NETWORK" "$MERGED"; then
+        fail "sample app requests no network access"
+        grep -nE "$NETWORK" "$MERGED" | sed 's/^/        /'
+    else
+        pass "sample app requests no network access"
+    fi
 fi
 
 # ---------------------------------------------------------------------------

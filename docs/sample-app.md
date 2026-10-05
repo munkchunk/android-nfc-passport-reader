@@ -19,6 +19,12 @@ library, so the wiring an app has to do stays visible.
 | `ui/theme/` | The palette, held to WCAG 2.2 AA by `ContrastTest` (see [Accessibility](#accessibility)) |
 | `src/debug/demo/` | `DemoResultActivity`: the result screen on the ICAO specimen, debug builds only |
 
+**The app has no network access.** It requests the camera and NFC only. ML
+Kit's text recognition brings in Google's telemetry library, which asks for
+`INTERNET` and `ACCESS_NETWORK_STATE`; the manifest removes both, and
+`tools/checks.sh` fails if the merged manifest gains either again. The text
+model is bundled with the app, so scanning works offline.
+
 ## The result screen
 
 The screen shows what the chip holds and what could be verified about it.

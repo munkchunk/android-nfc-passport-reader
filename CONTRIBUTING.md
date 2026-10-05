@@ -42,12 +42,13 @@ tools/checks.sh --staged
 ```
 
 It builds both modules from exactly what you have staged, in a fresh
-directory with the build cache off, then runs the unit tests, lint, detekt,
-the API check and the licensing checks. Without `--staged` it checks the
-working tree incrementally, which is quicker but not proof: a stale
-incremental build can pass it while the commit fails to compile.
-`--fast` skips the assemble steps; do not rely on it for the final run, since
-the sample app failing to compile is how an API leak is caught.
+directory with the build cache off, checks that the sample app requests no
+network access, then runs the unit tests, lint, detekt, the API check and the
+licensing checks. Without `--staged` it checks the working tree
+incrementally, which is quicker but not proof: a stale incremental build can
+pass it while the commit fails to compile. `--fast` skips the assemble steps
+and the network check; do not rely on it for the final run, since the sample
+app failing to compile is how an API leak is caught.
 
 Some checks print SKIP when their tooling is not set up. That is not a pass,
 but it is not a failure either.
