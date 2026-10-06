@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     id("kotlin-parcelize")
+    alias(libs.plugins.maven.publish)
+    alias(libs.plugins.dokka)
 }
 
 android {
@@ -74,10 +76,8 @@ android {
 }
 
 dependencies {
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    implementation(libs.androidx.multidex)
+    // @StringRes on the error and read-state messages.
+    implementation(libs.androidx.annotation)
 
     // JPEG 2000 decoder for chip images: OpenJPEG behind a JNI wrapper,
     // BSD-2 throughout. Chosen over JJ2000, whose licence grants no rights
@@ -115,10 +115,6 @@ dependencies {
     // WSQ biometric image support
     implementation(libs.jnbis)
 
-    implementation(libs.commons.codec)
-
-
-    implementation(libs.androidannotations.api)
     implementation(libs.kotlinx.coroutines.android)
 
     implementation(libs.timber)
@@ -127,6 +123,47 @@ dependencies {
     testImplementation(libs.robolectric)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+}
+
+// Published to Maven Central as io.github.munkchunk:passport-reader. Only the
+// release variant is published, with sources and Dokka HTML as the javadoc
+// jar, both of which Central requires. Signing reads the key from the
+// publisher's ~/.gradle/gradle.properties, never from this repository; see
+// docs/releasing.md. Without a key nothing is signed, so publishToMavenLocal
+// works for anyone, and Central rejects an unsigned upload.
+mavenPublishing {
+    publishToMavenCentral()
+    if (providers.gradleProperty("signing.keyId").isPresent) {
+        signAllPublications()
+    }
+
+    coordinates("io.github.munkchunk", "passport-reader", property("VERSION_NAME").toString())
+
+    pom {
+        name = "Android NFC Passport Reader"
+        description = "Reads the contactless chip in an ePassport and verifies what can be trusted about it."
+        url = "https://github.com/munkchunk/android-nfc-passport-reader"
+        inceptionYear = "2026"
+        licenses {
+            license {
+                name = "The Apache License, Version 2.0"
+                url = "https://www.apache.org/licenses/LICENSE-2.0.txt"
+                distribution = "repo"
+            }
+        }
+        developers {
+            developer {
+                id = "munkchunk"
+                name = "Iain Griffiths"
+                url = "https://github.com/munkchunk"
+            }
+        }
+        scm {
+            url = "https://github.com/munkchunk/android-nfc-passport-reader"
+            connection = "scm:git:https://github.com/munkchunk/android-nfc-passport-reader.git"
+            developerConnection = "scm:git:ssh://git@github.com/munkchunk/android-nfc-passport-reader.git"
+        }
+    }
 }
 
 configurations.all {

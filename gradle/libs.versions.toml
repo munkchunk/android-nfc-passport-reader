@@ -3,10 +3,12 @@ androidGradlePlugin = "8.13.2"
 kotlin = "1.9.23"
 binaryCompatibilityValidator = "0.16.3"
 detekt = "1.23.7"
+mavenPublish = "0.37.0"
+dokka = "2.2.0"
 
 # AndroidX / UI
 coreKtx = "1.16.0"
-appcompat = "1.7.1"
+annotation = "1.8.1"
 material = "1.13.0"
 lifecycleRuntimeKtx = "2.7.0"
 activityCompose = "1.9.0"
@@ -33,12 +35,9 @@ bouncycastle = "1.86"
 jmrtd = "0.8.8"
 scuba = "0.0.26"
 certCvc = "1.4.13"
-commonsCodec = "1.19.0"
-multidex = "2.0.1"
 jnbis = "2.0.2"
 # 1.1.0 requires compileSdk 37; revisit when compileSdk reaches 37.
 jp2Android = "1.0.5"
-androidannotationsApi = "4.8.0"
 coroutinesAndroid = "1.8.1"
 
 [plugins]
@@ -47,13 +46,14 @@ android-library = { id = "com.android.library", version.ref = "androidGradlePlug
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 binary-compatibility-validator = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "binaryCompatibilityValidator" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "mavenPublish" }
+dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 
 [libraries]
 # AndroidX
+androidx-annotation = { group = "androidx.annotation", name = "annotation", version.ref = "annotation" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
-androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
-androidx-multidex = { module = "androidx.multidex:multidex", version.ref = "multidex" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
 # Compose (sample app only)
@@ -87,10 +87,8 @@ bouncycastle-bcutil = { module = "org.bouncycastle:bcutil-jdk18on", version.ref 
 jmrtd = { module = "org.jmrtd:jmrtd", version.ref = "jmrtd" }
 scuba-sc-android = { module = "net.sf.scuba:scuba-sc-android", version.ref = "scuba" }
 cert-cvc = { module = "org.ejbca.cvc:cert-cvc", version.ref = "certCvc" }
-commons-codec = { module = "commons-codec:commons-codec", version.ref = "commonsCodec" }
 jnbis = { module = "com.github.mhshams:jnbis", version.ref = "jnbis" }
 jp2-android = { module = "io.github.michaldvorak-gemalto:jp2-android", version.ref = "jp2Android" }
-androidannotations-api = { module = "org.androidannotations:androidannotations-api", version.ref = "androidannotationsApi" }
 
 # Testing
 junit = { group = "junit", name = "junit", version.ref = "junit" }

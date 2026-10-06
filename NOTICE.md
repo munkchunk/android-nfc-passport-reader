@@ -155,8 +155,6 @@ Verified against the `<licenses>` block of each resolved POM, or an ancestor's.
 | `com.github.mhshams:jnbis` | Apache License 2.0 |
 | `com.jakewharton.timber:timber` | Apache License 2.0 |
 | `org.jetbrains.kotlinx:kotlinx-coroutines-android` | Apache License 2.0 |
-| `commons-codec:commons-codec` | Apache License 2.0 — *declared on the `org.apache:apache` ancestor POM; the jar ships `META-INF/LICENSE.txt`* |
-| `org.androidannotations:androidannotations-api` | Apache License 2.0 — *declared on the parent POM, not the artifact's own* |
 | AndroidX (including CameraX), Jetpack Compose, Material Components | Apache License 2.0 |
 | `com.google.accompanist:accompanist-permissions` (sample app) | Apache License 2.0 |
 | `com.google.mlkit:text-recognition` (sample app) | **ML Kit Terms of Service** (<https://developers.google.com/ml-kit/terms>) — not an open-source licence; the library does not use it |
