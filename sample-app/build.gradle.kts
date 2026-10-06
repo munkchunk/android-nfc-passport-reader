@@ -11,10 +11,15 @@ android {
         applicationId = "io.github.munkchunk.passportreader.sample"
         minSdk = 29
         targetSdk = 36
-        // From the shared VERSION_NAME: 0.1.0 is 100, 1.2.3 is 10203.
+        // From the shared VERSION_NAME: 0.1.0 is 100, 1.2.3 is 10203. A suffix
+        // such as -SNAPSHOT is ignored, so it shares its release's code.
         versionName = property("VERSION_NAME").toString()
-        versionCode = versionName!!.split(".").map(String::toInt)
-            .let { (major, minor, patch) -> major * 10_000 + minor * 100 + patch }
+        val (major, minor, patch) = requireNotNull(
+            Regex("""(\d+)\.(\d+)\.(\d+)(-.+)?""").matchEntire(versionName!!)
+        ) { "VERSION_NAME must be MAJOR.MINOR.PATCH, optionally with a -suffix: $versionName" }
+            .destructured.toList().take(3).map(String::toInt)
+        require(minor < 100 && patch < 100) { "VERSION_NAME minor and patch must be below 100: $versionName" }
+        versionCode = major * 10_000 + minor * 100 + patch
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }

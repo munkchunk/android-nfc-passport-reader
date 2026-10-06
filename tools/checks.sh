@@ -191,13 +191,15 @@ else
     pass "no vendored org.jmrtd package"
 fi
 
-# An `api` dependency in the library would publish its transitive classpath to
-# every consumer. There should be none at all.
-if grep -Eq '^\s*api\(' passport-reader/build.gradle.kts; then
-    fail "library declares no api() dependencies"
-    grep -En '^\s*api\(' passport-reader/build.gradle.kts | sed 's/^/        /'
+# An `api` dependency in the library puts it on every consumer's compile
+# classpath. The one allowed is kotlinx-coroutines, whose StateFlow is the
+# manager's readState (docs/design-notes.md, "Public API").
+API_ALLOWED='libs\.kotlinx\.coroutines\.android'
+if grep -E '^\s*api\(' passport-reader/build.gradle.kts | grep -Evq "api\($API_ALLOWED\)"; then
+    fail "library declares no api() dependencies beyond coroutines"
+    grep -En '^\s*api\(' passport-reader/build.gradle.kts | grep -Ev "api\($API_ALLOWED\)" | sed 's/^/        /'
 else
-    pass "library declares no api() dependencies"
+    pass "library declares no api() dependencies beyond coroutines"
 fi
 
 # ---------------------------------------------------------------------------

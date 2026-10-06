@@ -157,6 +157,11 @@ detekt flags any new broad catch that is not suppressed on purpose.
 SCUBA and BouncyCastle be `implementation` dependencies, so no app compiles
 against an LGPL library through this one. Convert in `mapping/` instead.
 
+The one exception is kotlinx-coroutines: `NfcPassportReaderManager.readState`
+is a `StateFlow`, and `readPassport` suspends, so coroutines is part of how
+the API is used. It is an `api` dependency, so apps get it on their compile
+classpath, and it is Apache-2.0. `checks.sh` allows it and nothing else.
+
 **The public API is recorded and checked.** binary-compatibility-validator
 keeps it in `passport-reader/api/passport-reader.api`. `apiCheck` fails when
 it changes and `apiDump` accepts a change, so every API change shows up as a

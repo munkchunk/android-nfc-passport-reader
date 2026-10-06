@@ -47,6 +47,25 @@ data group.
 
 ## Using the library
 
+The library is on Maven Central, for apps with `minSdk` 29 or higher:
+
+```kotlin
+dependencies {
+    implementation("io.github.munkchunk:passport-reader:0.1.0")
+}
+
+android {
+    // BouncyCastle's three jars each carry the same licence file.
+    packaging {
+        resources {
+            pickFirsts += "META-INF/LICENSE.md"
+        }
+    }
+}
+```
+
+The library carries its own R8 rules, so a minified app needs nothing more.
+
 Two levels of API, depending on how much you want to own.
 
 **The whole flow**, including ReaderMode and retries:
@@ -159,10 +178,12 @@ echo "sdk.dir=/path/to/android-sdk" > local.properties
 ## Verifying it works
 
 **An emulator cannot do this.** You need an NFC-capable Android phone and a real
-ePassport. Install the sample app with `./gradlew :sample-app:installDebug`,
-enter or scan the passport's details, and hold it against the back of the
-phone. [docs/testing.md](docs/testing.md) has the log tags to watch, what a
-good read looks like, and what to check first when one fails.
+ePassport. Install the sample app from the APK on the
+[Releases page](https://github.com/munkchunk/android-nfc-passport-reader/releases),
+or build it with `./gradlew :sample-app:installDebug`, then enter or scan the
+passport's details and hold it against the back of the phone.
+[docs/testing.md](docs/testing.md) has the log tags to watch, what a good read
+looks like, and what to check first when one fails.
 
 ## Limitations
 
@@ -193,6 +214,8 @@ The full list is in [docs/architecture.md](docs/architecture.md#known-limitation
   scanning and accessibility.
 - [docs/testing.md](docs/testing.md): the automated tests, and testing on a
   phone with a real passport.
+- [docs/releasing.md](docs/releasing.md): how a version is published to Maven
+  Central and the sample app signed and released.
 - [NOTICE.md](NOTICE.md): third-party code and licences.
 
 ## Contributing

@@ -11,6 +11,7 @@ The rest of the documentation:
 | [data-groups.md](data-groups.md) | What is read from the chip, group by group |
 | [sample-app.md](sample-app.md) | The sample app: its structure, result screen, MRZ scanning and accessibility |
 | [testing.md](testing.md) | What the unit tests cover, and how to test on a phone with a real passport |
+| [releasing.md](releasing.md) | Publishing the library to Maven Central and releasing the signed sample app |
 | [CONTRIBUTING.md](../CONTRIBUTING.md) | Building, the checks, and the house rules |
 
 ## Overview

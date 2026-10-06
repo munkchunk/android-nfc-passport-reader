@@ -71,7 +71,7 @@ These are the rules a change is most likely to break.
   `reader/`, `timing/` and `trust/`.
 - **No third-party type on the public API.** JMRTD, SCUBA and BouncyCastle are
   `implementation` dependencies because none of their types escapes. Convert
-  in `mapping/`.
+  in `mapping/`. The one exception is kotlinx-coroutines' `StateFlow`.
 - **Write it rather than copy it in.** JMRTD is a linked dependency, and this
   repository contains none of its source. JMRTD 0.8.8 is the protocol layer
   only; if you need something above that, write it here.

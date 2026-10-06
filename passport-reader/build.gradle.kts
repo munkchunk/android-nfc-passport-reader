@@ -115,7 +115,10 @@ dependencies {
     // WSQ biometric image support
     implementation(libs.jnbis)
 
-    implementation(libs.kotlinx.coroutines.android)
+    // The library's only api dependency: NfcPassportReaderManager.readState is
+    // a StateFlow, so apps compile against coroutines through this library.
+    // It is Apache-2.0; see docs/design-notes.md, "Public API".
+    api(libs.kotlinx.coroutines.android)
 
     implementation(libs.timber)
 
@@ -133,7 +136,9 @@ dependencies {
 // works for anyone, and Central rejects an unsigned upload.
 mavenPublishing {
     publishToMavenCentral()
-    if (providers.gradleProperty("signing.keyId").isPresent) {
+    if (providers.gradleProperty("signing.keyId").isPresent ||
+        providers.gradleProperty("signingInMemoryKey").isPresent
+    ) {
         signAllPublications()
     }
 
