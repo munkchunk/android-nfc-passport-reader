@@ -11,15 +11,38 @@ android {
         applicationId = "io.github.munkchunk.passportreader.sample"
         minSdk = 29
         targetSdk = 36
-        versionCode = 1
-        versionName = "0.1.0"
+        // From the shared VERSION_NAME: 0.1.0 is 100, 1.2.3 is 10203.
+        versionName = property("VERSION_NAME").toString()
+        versionCode = versionName!!.split(".").map(String::toInt)
+            .let { (major, minor, patch) -> major * 10_000 + minor * 100 + patch }
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    // The release key lives outside the repository, and these properties come
+    // from the publisher's ~/.gradle/gradle.properties. Without them a release
+    // build is left unsigned, so it still builds anywhere. See docs/releasing.md.
+    val releaseStoreFile = providers.gradleProperty("RELEASE_STORE_FILE").orNull
+    signingConfigs {
+        if (releaseStoreFile != null) {
+            create("release") {
+                storeFile = file(releaseStoreFile)
+                storePassword = providers.gradleProperty("RELEASE_STORE_PASSWORD").get()
+                keyAlias = providers.gradleProperty("RELEASE_KEY_ALIAS").get()
+                keyPassword = providers.gradleProperty("RELEASE_KEY_PASSWORD").get()
+            }
+        }
+    }
+
     buildTypes {
         release {
-            isMinifyEnabled = false
+            signingConfig = signingConfigs.findByName("release")
+            isMinifyEnabled = true
+            isShrinkResources = true
+            // Phones with NFC are ARM. The x86 libraries only serve emulators,
+            // which cannot read a passport, and they are a third of the APK.
+            // Debug builds keep every ABI, so the app still runs on one.
+            ndk { abiFilters += listOf("arm64-v8a", "armeabi-v7a") }
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
