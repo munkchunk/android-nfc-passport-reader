@@ -67,7 +67,8 @@ class PassportReaderViewModel(application: Application) : AndroidViewModel(appli
     /**
      * What was last typed or scanned, kept so leaving the form and coming back
      * does not lose it - including when a read is interrupted by the screen
-     * locking.
+     * locking. Dropped once a read succeeds: the next form is for another
+     * passport, and the debug Previous button is how to read the same one.
      */
     var draftMrz by mutableStateOf<MrzKey?>(null)
         private set
@@ -193,6 +194,7 @@ class PassportReaderViewModel(application: Application) : AndroidViewModel(appli
             // shortcut can never replay a typo.
             mrzStore.save(key)
             previousMrz = key
+            draftMrz = null
             screen = Screen.Result
         } catch (e: CancellationException) {
             throw e
