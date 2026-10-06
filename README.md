@@ -51,7 +51,7 @@ The library is on Maven Central, for apps with `minSdk` 29 or higher:
 
 ```kotlin
 dependencies {
-    implementation("io.github.munkchunk:passport-reader:0.1.0")
+    implementation("io.github.munkchunk:android-passport-reader:0.1.1")
 }
 
 android {

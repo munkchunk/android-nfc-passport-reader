@@ -114,8 +114,10 @@ SHA-256 04:C4:F9:CF:49:A5:E7:26:0D:65:60:F9:FB:09:CA:9D:82:02:A3:34:53:27:F8:DE:
 7. **GitHub Release.** Create a release from the tag, attach the APK, and put
    its SHA-256 and what changed in the notes.
 8. **Check from outside.** A new project depending on
-   `io.github.munkchunk:passport-reader:<version>` resolves and builds, and the
-   APK from the release page installs.
+   `io.github.munkchunk:android-passport-reader:<version>` resolves and
+   builds, and the APK from the release page installs.
 
 Once something is on Maven Central it cannot be changed or removed. A mistake
-is fixed by releasing the next patch version.
+is fixed by releasing the next patch version. That is how the artifactId
+changed: 0.1.0 went out as `passport-reader`, and 0.1.1 onwards is
+`android-passport-reader`.

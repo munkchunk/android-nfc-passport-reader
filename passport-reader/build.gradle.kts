@@ -128,9 +128,9 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 }
 
-// Published to Maven Central as io.github.munkchunk:passport-reader. Only the
-// release variant is published, with sources and Dokka HTML as the javadoc
-// jar, both of which Central requires. Signing reads the key from the
+// Published to Maven Central as io.github.munkchunk:android-passport-reader.
+// Only the release variant is published, with sources and Dokka HTML as the
+// javadoc jar, both of which Central requires. Signing reads the key from the
 // publisher's ~/.gradle/gradle.properties, never from this repository; see
 // docs/releasing.md. Without a key nothing is signed, so publishToMavenLocal
 // works for anyone, and Central rejects an unsigned upload.
@@ -142,11 +142,11 @@ mavenPublishing {
         signAllPublications()
     }
 
-    coordinates("io.github.munkchunk", "passport-reader", property("VERSION_NAME").toString())
+    coordinates("io.github.munkchunk", "android-passport-reader", property("VERSION_NAME").toString())
 
     pom {
         name = "Android NFC Passport Reader"
-        description = "Reads the contactless chip in an ePassport and verifies what can be trusted about it."
+        description = "An Android library that reads the contactless chip in an ePassport with an Android phone's NFC, and verifies what can be trusted about it."
         url = "https://github.com/munkchunk/android-nfc-passport-reader"
         inceptionYear = "2026"
         licenses {
